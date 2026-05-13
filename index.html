@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inova Poli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0f1e;
+      --surface: #101828;
+      --accent: #00e5ff;
+      --accent2: #7c3aed;
+      --text: #f0f4ff;
+      --muted: #8892a4;
+      --border: rgba(255,255,255,0.08);
+      --slide-w: 100vw;
+      --slide-h: 100vh;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.4s ease;
+      z-index: 100;
+    }
+
+    /* ── SLIDE COUNTER ── */
+    #slide-counter {
+      position: fixed;
+      top: 20px; right: 28px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      z-index: 100;
+    }
+    #slide-counter span { color: var(--accent); }
+
+    /* ── NAV ARROWS ── */
+    .nav-btn {
+      position: fixed;
+      bottom: 32px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .nav-btn:hover { background: rgba(0,229,255,0.12); transform: scale(1.08); }
+    .nav-btn:active { transform: scale(0.95); }
+    #btn-prev { right: 88px; }
+    #btn-next { right: 32px; }
+    .nav-btn:disabled { opacity: 0.2; cursor: default; }
+    .nav-btn:disabled:hover { background: rgba(255,255,255,0.05); transform: none; }
+
+    /* ── DOT INDICATORS ── */
+    #dots {
+      position: fixed;
+      bottom: 42px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px;
+      z-index: 100;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: background 0.3s, transform 0.3s, width 0.3s;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: var(--accent);
+      width: 20px;
+      border-radius: 3px;
+    }
+
+    /* ── SLIDE WRAPPER ── */
+    #deck {
+      position: relative;
+      width: 100vw; height: 100vh;
+    }
+
+    /* ── INDIVIDUAL SLIDE ── */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 10vw;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(60px);
+      transition: opacity 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+    .slide.exit {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+
+    /* ── BACKGROUND GRID ── */
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* ── GLOW BLOB ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 0.15;
+    }
+
+    /* ── SLIDE TYPE: COVER ── */
+    .slide-cover {
+      text-align: center;
+    }
+    .slide-cover .eyebrow {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .slide-cover h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .slide-cover h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .slide-cover .subtitle {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .slide-cover .meta {
+      margin-top: 48px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SLIDE TYPE: SECTION ── */
+    .slide-section {
+      text-align: left;
+      align-items: flex-start;
+    }
+    .slide-section .section-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 6rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: 60px; right: 10vw;
+      letter-spacing: -0.04em;
+    }
+    .slide-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .slide-section h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .slide-section .desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ── SLIDE TYPE: CONTENT ── */
+    .slide-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .slide-content .label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .slide-content h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 32px;
+    }
+
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 860px;
+    }
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover { border-color: rgba(0,229,255,0.3); background: rgba(0,229,255,0.04); }
+    .card .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .card .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card .card-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── DIVIDER LINE ── */
+    .h-rule {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    /* ── SLIDE TYPE: CLOSING ── */
+    .slide-closing {
+      text-align: center;
+    }
+    .slide-closing h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .slide-closing h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .slide-closing .contact {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+    .slide-closing .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- Slide counter -->
+<div id="slide-counter"><span id="cur">1</span> / <span id="tot">1</span></div>
+
+<!-- Dot indicators -->
+<div id="dots"></div>
+
+<!-- Nav buttons -->
+<button class="nav-btn" id="btn-prev" aria-label="Anterior">&#8592;</button>
+<button class="nav-btn" id="btn-next" aria-label="Próximo">&#8594;</button>
+
+<!-- ────────────────── DECK ────────────────── -->
+<div id="deck">
+
+  <!-- SLIDE 1 · COVER -->
+  <section class="slide slide-cover active" data-index="0">
+    <div class="blob" style="width:500px;height:500px;background:var(--accent);top:-100px;right:-100px;"></div>
+    <div class="blob" style="width:400px;height:400px;background:var(--accent2);bottom:-80px;left:-80px;"></div>
+    <div class="eyebrow">Apresentação · 2025</div>
+    <h1>Título da<br><em>Apresentação</em></h1>
+    <p class="subtitle">Subtítulo ou descrição breve do tema desta apresentação. Será atualizado com os insumos.</p>
+    <p class="meta">Autor · Data · Evento</p>
+  </section>
+
+  <!-- SLIDE 2 · AGENDA -->
+  <section class="slide slide-content" data-index="1">
+    <div class="blob" style="width:360px;height:360px;background:var(--accent2);top:50%;right:-60px;transform:translateY(-50%);"></div>
+    <div class="label">Agenda</div>
+    <h3>O que vamos ver hoje</h3>
+    <div class="h-rule"></div>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">01</div><div class="card-title">Contexto</div><div class="card-text">Placeholder — será preenchido com o conteúdo real.</div></div>
+      <div class="card"><div class="card-icon">02</div><div class="card-title">Problema</div><div class="card-text">Placeholder — será preenchido com o conteúdo real.</div></div>
+      <div class="card"><div class="card-icon">03</div><div class="card-title">Solução</div><div class="card-text">Placeholder — será preenchido com o conteúdo real.</div></div>
+      <div class="card"><div class="card-icon">04</div><div class="card-title">Próximos Passos</div><div class="card-text">Placeholder — será preenchido com o conteúdo real.</div></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 · SECTION DIVIDER -->
+  <section class="slide slide-section" data-index="2">
+    <div class="blob" style="width:500px;height:500px;background:var(--accent);top:-100px;left:-100px;"></div>
+    <div class="section-num">01</div>
+    <div class="h-rule"></div>
+    <h2>Seção <em>Um</em></h2>
+    <p class="desc">Descrição da seção — placeholder a ser substituído pelos insumos reais.</p>
+  </section>
+
+  <!-- SLIDE 4 · CONTENT -->
+  <section class="slide slide-content" data-index="3">
+    <div class="blob" style="width:300px;height:300px;background:var(--accent2);bottom:-60px;right:5vw;"></div>
+    <div class="label">Seção 01</div>
+    <h3>Slide de Conteúdo</h3>
+    <div class="h-rule"></div>
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">💡</div><div class="card-title">Ponto A</div><div class="card-text">Placeholder — conteúdo será inserido em breve.</div></div>
+      <div class="card"><div class="card-icon">📊</div><div class="card-title">Ponto B</div><div class="card-text">Placeholder — conteúdo será inserido em breve.</div></div>
+      <div class="card"><div class="card-icon">🚀</div><div class="card-title">Ponto C</div><div class="card-text">Placeholder — conteúdo será inserido em breve.</div></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 · CLOSING -->
+  <section class="slide slide-closing" data-index="4">
+    <div class="blob" style="width:600px;height:600px;background:var(--accent);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <h2>Obrigado<br>pela <em>atenção</em></h2>
+    <p class="subtitle" style="margin-top:16px;color:var(--muted);">Alguma dúvida?</p>
+    <div class="contact">
+      <p>Nome · Cargo</p>
+      <p><a href="mailto:email@example.com">email@example.com</a></p>
+    </div>
+  </section>
+
+</div>
+<!-- ─────────────────────────────────────────── -->
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const progressBar = document.getElementById('progress-bar');
+  const curEl = document.getElementById('cur');
+  const totEl = document.getElementById('tot');
+  const dotsEl = document.getElementById('dots');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+
+  let current = 0;
+  let isAnimating = false;
+
+  // Build dots
+  totEl.textContent = total;
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(idx) {
+    if (isAnimating || idx === current || idx < 0 || idx >= total) return;
+    isAnimating = true;
+    const prev = current;
+    current = idx;
+
+    slides[prev].classList.add('exit');
+    slides[prev].classList.remove('active');
+
+    setTimeout(() => {
+      slides[prev].classList.remove('exit');
+      slides[current].classList.add('active');
+      isAnimating = false;
+    }, 100);
+
+    // Update UI
+    progressBar.style.width = ((current + 1) / total * 100) + '%';
+    curEl.textContent = current + 1;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current === total - 1;
+  }
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+  btnPrev.disabled = true;
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(current + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  });
+
+  // Touch swipe
+  let touchX = 0;
+  document.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 50) dx > 0 ? goTo(current + 1) : goTo(current - 1);
+  });
+
+  // Init progress bar
+  progressBar.style.width = (1 / total * 100) + '%';
+</script>
+</body>
+</html>
