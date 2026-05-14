@@ -5,6 +5,11 @@ on:
     branches:
       - master
 
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_PROJECT_ID: prj_AyguEPRlujG90uEplsFyWmIYbs6o
+  VERCEL_ORG_ID: F4Q28nmO1scnPlKSTGrXjJbW
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
