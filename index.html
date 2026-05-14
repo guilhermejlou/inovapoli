@@ -14,48 +14,45 @@
       --border:rgba(61,184,122,0.18);
       --serif:'DM Serif Display',serif; --sans:'DM Sans',sans-serif;
     }
-    html,body{width:100%;height:100%;background:var(--navy);color:var(--white);font-family:var(--sans);overflow:hidden;}
+    html,body{width:100%;height:100%;background:var(--navy);color:var(--white);font-family:var(--sans);overflow:hidden;font-size:17px;}
     #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green3));transition:width .5s cubic-bezier(.4,0,.2,1);z-index:200;}
-    #counter{position:fixed;top:20px;right:28px;font-size:.7rem;font-weight:600;letter-spacing:.12em;color:var(--muted);z-index:200;}
+    #counter{position:fixed;top:20px;right:28px;font-size:.65rem;font-weight:600;letter-spacing:.12em;color:var(--muted);z-index:200;}
     .nav-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(61,184,122,.12);border:1px solid var(--border);color:var(--green3);font-size:1.2rem;width:40px;height:40px;border-radius:50%;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
     .nav-btn:hover{background:rgba(61,184,122,.28);transform:translateY(-50%) scale(1.1);}
     #btn-prev{left:16px;} #btn-next{right:16px;}
     #slides{width:100%;height:100%;position:relative;overflow:hidden;}
-    .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:56px 80px 56px 80px;opacity:0;transform:translateX(60px);transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);pointer-events:none;background:var(--navy);}
+    .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:56px 80px;opacity:0;transform:translateX(60px);transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);pointer-events:none;background:var(--navy);}
     .slide.active{opacity:1;transform:translateX(0);pointer-events:all;}
     .slide.exit{opacity:0;transform:translateX(-60px);}
     .slide::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(61,184,122,.07) 0%,transparent 70%);top:-200px;right:-200px;pointer-events:none;}
-    /* presenter badge */
-    .presenter{position:absolute;bottom:22px;right:28px;font-size:.65rem;color:rgba(61,184,122,.6);letter-spacing:.08em;font-weight:600;}
-    .tag{font-size:.62rem;font-weight:700;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:12px;display:block;}
+    .presenter{position:absolute;bottom:22px;right:28px;font-size:.62rem;color:rgba(61,184,122,.6);letter-spacing:.08em;font-weight:600;}
+    .tag{font-size:.6rem;font-weight:700;letter-spacing:.18em;color:var(--green);text-transform:uppercase;margin-bottom:12px;display:block;}
     h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);line-height:1.1;color:var(--white);margin-bottom:20px;}
     h1 em{color:var(--green);font-style:normal;}
     h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.2;color:var(--white);margin-bottom:20px;}
     h2 em{color:var(--green);font-style:normal;}
-    .sub{font-size:.92rem;color:var(--muted);line-height:1.7;max-width:600px;}
+    .sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:620px;}
     .green-line{width:44px;height:3px;background:var(--green);border-radius:2px;margin-bottom:18px;}
     .slide-inner{width:100%;max-width:1100px;display:flex;flex-direction:column;}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:8px;}
     .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:8px;}
+    /* card base text bumped 33% */
     .card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:18px 22px;}
     .card h3{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
-    .card p,.card li{font-size:.8rem;color:rgba(244,249,246,.75);line-height:1.65;}
+    .card p,.card li{font-size:1.06rem;color:rgba(244,249,246,.75);line-height:1.65;}
     .card ul{padding-left:16px;} .card li{margin-bottom:4px;}
     .stat{background:rgba(61,184,122,.1);border:1px solid var(--border);border-radius:10px;padding:12px 18px;}
     .stat .num{font-family:var(--serif);font-size:1.5rem;color:var(--green);line-height:1;}
-    .stat .lbl{font-size:.68rem;color:var(--muted);margin-top:3px;}
-    /* competitor table */
+    .stat .lbl{font-size:.9rem;color:var(--muted);margin-top:3px;}
     .comp-table{width:100%;border-collapse:collapse;margin-top:12px;}
-    .comp-table th{font-size:.62rem;font-weight:700;letter-spacing:.12em;color:var(--green);text-transform:uppercase;text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);}
-    .comp-table td{font-size:.78rem;color:rgba(244,249,246,.8);padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04);}
+    .comp-table th{font-size:.65rem;font-weight:700;letter-spacing:.12em;color:var(--green);text-transform:uppercase;text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);}
+    .comp-table td{font-size:1.04rem;color:rgba(244,249,246,.8);padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04);}
     .comp-table tr:first-child td{color:var(--green3);font-weight:600;}
     .yes{color:var(--green) !important;font-weight:700;} .partial{color:#F0B429 !important;} .no{color:rgba(244,249,246,.3) !important;}
-    /* mintzberg */
     .mintz-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
     .mintz-row{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;}
     .mintz-row .mkey{font-size:.62rem;font-weight:700;letter-spacing:.1em;color:var(--green);text-transform:uppercase;margin-bottom:3px;}
-    .mintz-row .mval{font-size:.75rem;color:rgba(244,249,246,.75);line-height:1.5;}
-    /* swot */
+    .mintz-row .mval{font-size:1rem;color:rgba(244,249,246,.75);line-height:1.5;}
     .swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:12px;overflow:hidden;margin-top:10px;}
     .swot-cell{padding:16px 18px;}
     .swot-cell.forcas{background:rgba(61,184,122,.15);} .swot-cell.fraquezas{background:rgba(240,180,41,.08);}
@@ -63,49 +60,46 @@
     .swot-cell h4{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
     .swot-cell.forcas h4{color:var(--green);} .swot-cell.fraquezas h4{color:#F0B429;}
     .swot-cell.oportunidades h4{color:var(--green3);} .swot-cell.ameacas h4{color:#EF6060;}
-    .swot-cell ul{padding-left:14px;} .swot-cell li{font-size:.72rem;color:rgba(244,249,246,.78);margin-bottom:3px;line-height:1.5;}
-    /* gate flow */
+    .swot-cell ul{padding-left:14px;} .swot-cell li{font-size:.96rem;color:rgba(244,249,246,.78);margin-bottom:3px;line-height:1.5;}
     .gate-flow{display:flex;align-items:stretch;gap:0;margin-top:16px;}
     .gate-box{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center;}
     .gate-box .g-icon{font-size:1.5rem;margin-bottom:5px;}
     .gate-box h4{font-size:.78rem;font-weight:700;color:var(--green3);margin-bottom:5px;}
-    .gate-box p{font-size:.68rem;color:var(--muted);line-height:1.5;}
+    .gate-box p{font-size:.9rem;color:var(--muted);line-height:1.5;}
     .gate-arrow{font-size:1.2rem;color:var(--green);padding:0 8px;display:flex;align-items:center;}
-    /* criteria */
     .crit-card{flex:1;background:rgba(61,184,122,.07);border:1px solid rgba(61,184,122,.2);border-radius:10px;padding:16px 18px;}
     .crit-card .num{font-family:var(--serif);font-size:2rem;color:var(--green);line-height:1;}
     .crit-card h4{font-size:.73rem;font-weight:700;color:var(--green3);margin:4px 0 6px;}
-    .crit-card p{font-size:.72rem;color:rgba(244,249,246,.7);line-height:1.55;}
-    /* project examples */
+    .crit-card p{font-size:.96rem;color:rgba(244,249,246,.7);line-height:1.55;}
     .proj-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);display:flex;flex-direction:column;gap:8px;}
     .proj-card .ptag{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:20px;display:inline-block;width:fit-content;}
     .proj-card .ptag.radical{background:rgba(239,96,96,.15);color:#EF6060;}
     .proj-card .ptag.incremental{background:rgba(61,184,122,.15);color:var(--green);}
     .proj-card h4{font-size:.9rem;font-weight:700;color:var(--white);}
-    .proj-card p{font-size:.75rem;color:rgba(244,249,246,.7);line-height:1.6;}
-    .proj-card .status{font-size:.68rem;color:var(--muted);margin-top:4px;}
+    .proj-card p{font-size:1rem;color:rgba(244,249,246,.7);line-height:1.6;}
+    .proj-card .status{font-size:.9rem;color:var(--muted);margin-top:4px;}
     /* title slide */
     #slide-1{align-items:flex-start;padding:80px 100px;}
     #slide-1::after{content:'';position:absolute;right:0;top:0;bottom:0;width:38%;background:linear-gradient(135deg,rgba(61,184,122,.12) 0%,rgba(61,184,122,.05) 100%);clip-path:polygon(20% 0%,100% 0%,100% 100%,0% 100%);}
-    .logo-mark{width:48px;height:48px;border-radius:12px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.4rem;color:var(--navy);font-weight:700;margin-bottom:28px;}
-    /* dots */
+    .capim-logo{height:64px;width:auto;display:block;margin-bottom:24px;}
     #dots{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:200;}
     .dot{width:6px;height:6px;border-radius:50%;background:rgba(61,184,122,.25);cursor:pointer;transition:background .3s,transform .3s;}
     .dot.active{background:var(--green);transform:scale(1.3);}
     .scroll-inner{overflow-y:auto;max-height:calc(100vh - 150px);width:100%;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
-    /* TAM circles */
     .circles-row{display:flex;align-items:flex-end;gap:24px;padding:10px 0;}
     .cw{display:flex;flex-direction:column;align-items:center;gap:8px;}
     .circ{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid var(--green);}
     .circ .cn{font-family:var(--serif);color:var(--green);line-height:1.1;}
-    .circ .cl{font-size:.58rem;color:var(--muted);}
+    .circ .cl{font-size:.7rem;color:var(--muted);}
     .cw .ct{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--green3);text-transform:uppercase;}
-    .cw .cd{font-size:.68rem;color:var(--muted);text-align:center;max-width:110px;line-height:1.4;}
+    .cw .cd{font-size:.9rem;color:var(--muted);text-align:center;max-width:120px;line-height:1.4;}
+    /* slide 13 */
+    #slide-13{background:var(--navy);text-align:center;align-items:center;justify-content:center;}
   </style>
 </head>
 <body>
 <div id="progress"></div>
-<div id="counter">1 / 12</div>
+<div id="counter">1 / 13</div>
 <button class="nav-btn" id="btn-prev">&#8592;</button>
 <button class="nav-btn" id="btn-next">&#8594;</button>
 <div id="dots"></div>
@@ -113,18 +107,18 @@
 
 <!-- SLIDE 1: INTRODUÇÃO -->
 <div class="slide active" id="slide-1">
-  <div class="logo-mark">C</div>
+  <img class="capim-logo" src="data:image/png;base64,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" alt="Capim" id="logo-capa">
   <span class="tag">PRO3584 · Gestão da Inovação · Grupo 6</span>
   <h1>Capim <em>Software</em></h1>
-  <p class="sub">Análise do ecossistema integrado de healthtech + fintech para clínicas odontológicas — estrutura organizacional e processo decisório.</p>
-  <div style="display:flex;flex-direction:column;gap:4px;margin-top:36px">
-    <span style="font-size:.72rem;color:var(--muted)">Augusto Ribeiro · Gabriel Axel · Guilherme Lourenço · Pedro Favero · Thalles Lettieri</span>
-    <span style="font-size:.68rem;color:rgba(126,168,154,.45)">Escola Politécnica da USP · Maio de 2026 · Prof. Mario Sergio Salerno</span>
+  <p class="sub">Uma análise da gestão da inovação na healthtech + fintech para clínicas odontológicas</p>
+  <div style="display:flex;flex-direction:column;gap:6px;margin-top:32px">
+    <span style="font-size:1rem;color:var(--muted)">Augusto Ribeiro · Gabriel Axel · Guilherme Lourenço · Pedro Favero · Thalles Lettieri</span>
+    <span style="font-size:.9rem;color:rgba(126,168,154,.55)">Escola Politécnica da USP · Maio de 2026 · Prof. Mario Sergio Salerno</span>
   </div>
   <span class="presenter">Pedro</span>
 </div>
 
-<!-- SLIDE 2: DESCRIÇÃO DA EMPRESA -->
+<!-- SLIDE 2: ATIVIDADES E CLIENTES -->
 <div class="slide" id="slide-2">
   <div class="slide-inner">
     <span class="tag">Descrição da Empresa</span>
@@ -150,7 +144,7 @@
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
-        <div class="stat"><div class="num">6.000+</div><div class="lbl">clínicas atendidas no Brasil</div></div>
+        <div class="stat"><div class="num">7.000+</div><div class="lbl">clínicas atendidas no Brasil</div></div>
         <div class="stat"><div class="num">R$ 450M+</div><div class="lbl">em crédito viabilizado</div></div>
         <div class="stat"><div class="num">70 mil+</div><div class="lbl">pacientes com acesso facilitado</div></div>
         <div class="stat"><div class="num">400+</div><div class="lbl">cidades atendidas</div></div>
@@ -203,18 +197,18 @@
           <span class="cd">Clínicas privadas com perfil de digitalização</span>
         </div>
         <div class="cw" style="margin-bottom:32px">
-          <div class="circ" style="width:96px;height:96px;background:rgba(61,184,122,.18)">
-            <div class="cn" style="font-size:.9rem">R$180–500M</div>
+          <div class="circ" style="width:100px;height:100px;background:rgba(61,184,122,.18)">
+            <div class="cn" style="font-size:.85rem">R,4–2,4B</div>
             <div class="cl">ARR</div>
           </div>
           <span class="ct">SOM</span>
-          <span class="cd">3–5% penetração em 5 anos</span>
+          <span class="cd">20 mil clínicas — 20–25% penetração</span>
         </div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:8px">
         <div class="card"><h3>TAM</h3><p>Mercado odontológico privado brasileiro: R$ 30–40B/ano. Inclui consultas, tratamentos e gestão de clínicas (CFO + Grand View Research).</p></div>
-        <div class="card"><h3>SAM</h3><p>80–100 mil clínicas privadas com perfil de digitalização. Ticket médio mensal de R$ 1.500–10.000/clínica.</p></div>
-        <div class="card"><h3>SOM</h3><p>2.500–5.000 clínicas em 5 anos (3–5% de penetração). Ticket médio ponderado R$ 6.000–10.000/mês.</p></div>
+        <div class="card"><h3>SAM</h3><p>80–100 mil clínicas privadas com perfil de digitalização. Ticket médio mensal de R$ 6.000–10.000/clínica.</p></div>
+        <div class="card" style="background:rgba(61,184,122,.07);border-color:rgba(61,184,122,.3)"><h3>SOM</h3><p>Meta de <strong style="color:var(--green3)">20.000 clínicas</strong> (20–25% de penetração). A Capim já conta com 7.000 clínicas ativas. Ticket médio ponderado R$ 6.000–10.000/mês → ARR estimado de <strong style="color:var(--green3)">R$ 1,4B – R$ 2,4B</strong>.</p></div>
       </div>
     </div>
   </div>
@@ -229,7 +223,7 @@
     <div class="green-line"></div>
     <div class="two-col">
       <div>
-        <p style="font-size:.76rem;color:var(--muted);margin-bottom:10px">A Capim compete em 3 frentes simultâneas: SaaS · BNPL · POS</p>
+        <p style="font-size:1rem;color:var(--muted);margin-bottom:10px">A Capim compete em 3 frentes simultâneas: SaaS · BNPL · POS</p>
         <table class="comp-table">
           <thead><tr><th>Empresa</th><th>SaaS</th><th>BNPL</th><th>POS</th></tr></thead>
           <tbody>
@@ -252,8 +246,8 @@
       <div style="display:flex;flex-direction:column;gap:10px">
         <div class="card">
           <h3>📊 SaaS de Gestão</h3>
-          <p><strong style="color:var(--green3)">Simples Dental:</strong> 60k+ dentistas, foco em clínicas pequenas/médias, interface simples.</p>
-          <p style="margin-top:6px"><strong style="color:var(--green3)">Clinicorp:</strong> 57k+ usuários, CRM + funil de vendas + IA, voltado a redes com múltiplas unidades.</p>
+          <p><strong style="color:var(--green3)">Simples Dental:</strong> 15 mil+ dentistas, foco em clínicas pequenas/médias, interface simples.</p>
+          <p style="margin-top:6px"><strong style="color:var(--green3)">Clinicorp:</strong> 20 mil+ dentistas, CRM + funil de vendas + IA, voltado a redes com múltiplas unidades.</p>
         </div>
         <div class="card">
           <h3>💳 BNPL e Parcelamento</h3>
@@ -261,7 +255,7 @@
         </div>
         <div class="card">
           <h3>📈 Série A (fev/2025)</h3>
-          <p>R$ 132M liderado por Valor Capital + QED. Receita triplicou em 2024. Meta: 10.000 clínicas ativas.</p>
+          <p>R$ 132M liderado por Valor Capital + QED. Receita triplicou em 2024. Meta: 20.000 clínicas ativas.</p>
         </div>
       </div>
     </div>
@@ -280,7 +274,7 @@
         <div style="background:rgba(61,184,122,.08);border:1px solid rgba(61,184,122,.3);border-radius:10px;padding:14px 18px;margin-bottom:14px">
           <p style="font-size:.72rem;font-weight:700;color:var(--green3);margin-bottom:4px">Configuração identificada:</p>
           <p style="font-family:var(--serif);font-size:1.3rem;color:var(--green)">Adhocracia Operacional</p>
-          <p style="font-size:.75rem;color:rgba(244,249,246,.7);margin-top:6px">Típica de organizações cuja atividade central é a inovação contínua em ambiente dinâmico.</p>
+          <p style="font-size:1rem;color:rgba(244,249,246,.7);margin-top:6px">Típica de organizações cuja atividade central é a inovação contínua em ambiente dinâmico.</p>
         </div>
         <div class="mintz-grid">
           <div class="mintz-row"><div class="mkey">Coordenação</div><div class="mval">Ajuste mútuo — reuniões quinzenais e semanais entre times</div></div>
@@ -323,7 +317,7 @@
         <ul>
           <li>Pioneirismo em crédito odontológico no ponto de venda</li>
           <li>Ecossistema integrado: crédito + gestão + maquininha + carnê</li>
-          <li>Base instalada: 6.000+ clínicas, R$ 450M+ em crédito originado</li>
+          <li>Base instalada: 7.000+ clínicas, R$ 450M+ em crédito originado</li>
           <li>Assume risco de crédito diretamente (sem direito de regresso)</li>
           <li>Cultura de ownership e capacidade de iteração rápida</li>
           <li>Uso intensivo de IA no produto e na operação interna</li>
@@ -344,7 +338,7 @@
         <h4>🌱 Oportunidades</h4>
         <ul>
           <li>Aquisição de pacientes — "agenda cheia e rentável"</li>
-          <li>Cross-sell na base instalada de 6.000+ clínicas</li>
+          <li>Cross-sell na base instalada de 7.000+ clínicas</li>
           <li>IA generativa destrava iniciativas como a CamilA</li>
           <li>Expansão para verticais adjacentes: ótica, medicina, cirurgias eletivas</li>
           <li>Modelo B2C em validação — "Uber dos dentistas"</li>
@@ -411,31 +405,31 @@
     <div class="green-line"></div>
     <div class="two-col">
       <div style="display:flex;flex-direction:column;gap:8px">
-        <p style="font-size:.74rem;color:var(--muted)">Governança desenhada para autonomia dos times com alinhamento estratégico da liderança</p>
+        <p style="font-size:1rem;color:var(--muted)">Governança desenhada para autonomia dos times com alinhamento estratégico da liderança</p>
         <div class="card"><h3>🔵 Times de Produto Autônomos</h3><p>Cada squad itera e constrói funcionalidades de forma ágil. Responsabilidade dividida por produto: SaaS, BNPL, POS, Experimentos.</p></div>
         <div class="card"><h3>🟢 Diretoria de Produto</h3><p>Coordenação centralizada para evitar sobreposições e interferências entre squads.</p></div>
         <div class="card"><h3>🟡 Comitê Tático — Quinzenal</h3><p>Todos os PMs + time de design. Sincronização do desenvolvimento e alinhamento de prioridades.</p></div>
         <div class="card"><h3>🔴 Comitê Estratégico — Semanal</h3><p>CEO + Dir. Produto + Líder de Tecnologia + PM de Experimentos (Lucas Mathias). Define rumos e trata problemas críticos.</p></div>
       </div>
       <div>
-        <p style="font-size:.74rem;color:var(--muted);margin-bottom:12px">Ciclo de vida dos projetos — Stage-Gates adaptados</p>
+        <p style="font-size:1rem;color:var(--muted);margin-bottom:12px">Ciclo de vida dos projetos — Stage-Gates adaptados</p>
         <div class="gate-flow">
           <div class="gate-box">
             <div class="g-icon">🔬</div>
             <h4>Garagem 2</h4>
-            <p>Máxima incerteza. Time isolado. 5–10 clínicas parceiras. Vibecoding.</p>
+            <p>Máxima incerteza. Time isolado. 5–10 clínicas. Vibecoding.</p>
           </div>
           <div class="gate-arrow">→</div>
           <div class="gate-box">
             <div class="g-icon">⚙️</div>
             <h4>Garagem 1</h4>
-            <p>Marketing + Engenharia entram. 50–100 clínicas expostas.</p>
+            <p>Marketing + Eng. entram. 50–100 clínicas expostas.</p>
           </div>
           <div class="gate-arrow">→</div>
           <div class="gate-box">
             <div class="g-icon">🚀</div>
             <h4>Rua</h4>
-            <p>Produto maduro. Suporte + onboarding + comercial treinados. 500+ clínicas.</p>
+            <p>Produto maduro. Suporte + onboarding treinados. 500+ clínicas.</p>
           </div>
         </div>
         <div class="card" style="margin-top:12px;background:rgba(61,184,122,.07)">
@@ -468,7 +462,7 @@
       <div class="crit-card">
         <div class="num">03</div>
         <h4>Congelamento vs. Descontinuação</h4>
-        <p>Falha no trimestre: <strong style="color:var(--green3)">desligado e documentado</strong> — ou — <strong style="color:#F0B429">congelado</strong>, aguardando maturação tecnológica. Caso CamilA: continua para clínicas atuais, mas sem novos desenvolvimentos até a IA amadurecer.</p>
+        <p>Falha no trimestre: <strong style="color:var(--green3)">desligado e documentado</strong> — ou — <strong style="color:#F0B429">congelado</strong>, aguardando maturação tecnológica. Caso CamilA: continua para clínicas atuais, sem novos desenvolvimentos até a IA amadurecer.</p>
       </div>
     </div>
     <div class="two-col" style="margin-top:14px">
@@ -495,7 +489,7 @@
       <div style="display:flex;flex-direction:column;gap:10px">
         <div class="card" style="background:rgba(61,184,122,.07);border-color:rgba(61,184,122,.3)">
           <h3>🌀 Incerteza vs. Risco</h3>
-          <p>Inovação radical envolve necessidades de clientes difusas e tecnologias emergentes — inviabilizando ROI/VPL tradicionais. A Capim substitui planos rígidos por experimentação ágil com metas trimestrais, permitindo falhar rápido sem comprometer a estrutura global.</p>
+          <p>Inovação radical envolve necessidades difusas e tecnologias emergentes — inviabilizando ROI/VPL tradicionais. A Capim substitui planos rígidos por experimentação ágil com metas trimestrais, permitindo falhar rápido sem comprometer a estrutura global.</p>
         </div>
         <div class="card">
           <h3>🏭 Ambidestria: Garagem como Proteção</h3>
@@ -510,9 +504,9 @@
         <div class="card">
           <h3>📊 Funil de Inovação</h3>
           <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
-            <div style="background:rgba(61,184,122,.15);border-radius:6px;padding:8px 12px;font-size:.75rem;color:var(--green3)">🔬 <strong>Incubação</strong> — Garagem 2: hipóteses com 5–10 clínicas</div>
-            <div style="background:rgba(61,184,122,.1);border-radius:6px;padding:8px 12px;font-size:.75rem;color:var(--green3)">⚙️ <strong>Aceleração</strong> — Garagem 1: validação com 50–100 clínicas</div>
-            <div style="background:rgba(61,184,122,.07);border-radius:6px;padding:8px 12px;font-size:.75rem;color:var(--green3)">🚀 <strong>Comercialização</strong> — Rua: escala com 500+ clínicas</div>
+            <div style="background:rgba(61,184,122,.15);border-radius:6px;padding:8px 12px;font-size:1rem;color:var(--green3)">🔬 <strong>Incubação</strong> — Garagem 2: hipóteses com 5–10 clínicas</div>
+            <div style="background:rgba(61,184,122,.1);border-radius:6px;padding:8px 12px;font-size:1rem;color:var(--green3)">⚙️ <strong>Aceleração</strong> — Garagem 1: validação com 50–100 clínicas</div>
+            <div style="background:rgba(61,184,122,.07);border-radius:6px;padding:8px 12px;font-size:1rem;color:var(--green3)">🚀 <strong>Comercialização</strong> — Rua: escala com 500+ clínicas</div>
           </div>
         </div>
         <div class="card" style="background:rgba(61,184,122,.07);border-color:rgba(61,184,122,.3)">
@@ -537,7 +531,7 @@
         <h4>CamilA</h4>
         <p>IA conversacional para vender crédito diretamente ao paciente — sem o dentista como intermediário. Modelo "Uber dos dentistas": Capim capta o paciente e o direciona para clínica filiada.</p>
         <p style="margin-top:6px">Métrica inicial: clínicas assinantes pagando pela CamilA. Lutaram 3 meses pelo projeto.</p>
-        <div class="status">🟡 Status: <strong style="color:#F0B429">Congelada</strong> — continua para clínicas atuais, mas aguarda maturação da IA para novos desenvolvimentos.</div>
+        <div class="status">🟡 Status: <strong style="color:#F0B429">Congelada</strong> — continua para clínicas atuais, aguarda maturação da IA para novos desenvolvimentos.</div>
       </div>
       <div class="proj-card" style="background:rgba(61,184,122,.06);border-color:rgba(61,184,122,.2)">
         <span class="ptag incremental">Inovação Incremental</span>
@@ -549,14 +543,14 @@
       <div class="proj-card" style="background:rgba(61,184,122,.06);border-color:rgba(61,184,122,.2)">
         <span class="ptag incremental">Inovação Incremental</span>
         <h4>Sistema de Gestão</h4>
-        <p>Apesar de ser o produto mais antigo e considerado internamente o menos prioritário, recebe melhorias contínuas. Exemplo: disparo de lembrete de aniversário dos pacientes, que antes era apenas uma lista manual.</p>
-        <p style="margin-top:6px">Demonstra que mesmo o "produto renegado" da Capim está em constante evolução incremental, com automações que aumentam o valor percebido pela clínica.</p>
+        <p>Apesar de ser o produto mais antigo, recebe melhorias contínuas. Exemplo: disparo de lembrete de aniversário dos pacientes, que antes era apenas uma lista manual — agora automático.</p>
+        <p style="margin-top:6px">Demonstra que mesmo o "produto renegado" está em constante evolução incremental, com automações que aumentam o valor percebido pela clínica.</p>
         <div class="status">🟢 Status: <strong style="color:var(--green)">Em produção</strong> — melhorias contínuas em curso.</div>
       </div>
     </div>
     <div class="card" style="margin-top:14px;background:rgba(255,255,255,.03)">
       <h3>🔑 Padrão Observado</h3>
-      <p>Os três projetos ilustram como a Capim opera a ambidestria: o sistema de gestão e o Capix são melhorias incrementais no core, enquanto a CamilA representa a aposta radical de longo prazo — protegida na Garagem 2 até a tecnologia amadurecer.</p>
+      <p>Os três projetos ilustram como a Capim opera a ambidestria: Sistema de gestão e Capix são melhorias incrementais no core, enquanto CamilA representa a aposta radical de longo prazo — protegida na Garagem 2 até a tecnologia amadurecer.</p>
     </div>
   </div>
   <span class="presenter">Augusto</span>
@@ -565,27 +559,38 @@
 <!-- SLIDE 12: PRÓXIMOS PASSOS -->
 <div class="slide" id="slide-12">
   <div style="text-align:center;max-width:700px">
-    <div class="logo-mark" style="margin:0 auto 20px">C</div>
     <span class="tag" style="text-align:center;display:block;margin-bottom:14px">Próximos Passos</span>
     <h2 style="text-align:center">Agenda <em>futura</em> de análise</h2>
     <div class="green-line" style="margin:18px auto"></div>
     <div style="display:flex;flex-direction:column;gap:10px;text-align:left">
       <div class="card" style="display:flex;align-items:center;gap:16px;padding:14px 20px">
         <span style="font-size:1.2rem">📋</span>
-        <div><strong style="color:var(--green3);font-size:.82rem">Pontos Negativos do Processo Atual</strong><p style="font-size:.74rem">Identificar gargalos: dependência de pessoas-chave, critérios subjetivos, ausência de framework formal de stage-gates documentado.</p></div>
+        <div><strong style="color:var(--green3);font-size:1rem">Pontos Negativos do Processo Atual</strong><p style="font-size:.96rem">Identificar gargalos: dependência de pessoas-chave, critérios subjetivos, ausência de framework formal de stage-gates documentado.</p></div>
       </div>
       <div class="card" style="display:flex;align-items:center;gap:16px;padding:14px 20px">
         <span style="font-size:1.2rem">🏗️</span>
-        <div><strong style="color:var(--green3);font-size:.82rem">Sistema Proposto</strong><p style="font-size:.74rem">Modelo aprimorado de governança: formalizar stage-gates, critérios objetivos de go/no-go, estruturar comitê de inovação com papéis e responsabilidades definidos.</p></div>
+        <div><strong style="color:var(--green3);font-size:1rem">Sistema Proposto</strong><p style="font-size:.96rem">Modelo aprimorado de governança: formalizar stage-gates, critérios objetivos de go/no-go, estruturar comitê de inovação com papéis e responsabilidades definidos.</p></div>
       </div>
       <div class="card" style="display:flex;align-items:center;gap:16px;padding:14px 20px">
         <span style="font-size:1.2rem">📊</span>
-        <div><strong style="color:var(--green3);font-size:.82rem">Conclusão e Recomendações</strong><p style="font-size:.74rem">Síntese do diagnóstico, validação do modelo de contingência e apresentação das alterações propostas com justificativa teórica e empírica.</p></div>
+        <div><strong style="color:var(--green3);font-size:1rem">Conclusão e Recomendações</strong><p style="font-size:.96rem">Síntese do diagnóstico, validação do modelo de contingência e apresentação das alterações propostas com justificativa teórica e empírica.</p></div>
       </div>
     </div>
-    <p style="font-size:.7rem;color:var(--muted);margin-top:20px">Grupo 6 · PRO3584 · EPUSP · Maio 2026</p>
+    <p style="font-size:.9rem;color:var(--muted);margin-top:20px">Grupo 6 · PRO3584 · EPUSP · Maio 2026</p>
   </div>
   <span class="presenter">Pedro</span>
+</div>
+
+<!-- SLIDE 13: AGRADECIMENTO -->
+<div class="slide" id="slide-13">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;text-align:center">
+    <div>
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--green);text-transform:uppercase;margin-bottom:20px">PRO3584 · Gestão da Inovação · Grupo 6</p>
+      <h1 style="font-family:var(--serif);font-size:clamp(2rem,5vw,3.6rem);letter-spacing:.04em;color:var(--white);line-height:1.2">OBRIGADO</h1>
+      <p style="font-size:1.1rem;color:var(--muted);margin-top:16px;line-height:1.7;max-width:500px">Augusto · Gabriel · Guilherme · Pedro · Thalles<br><span style="font-size:.9rem;color:rgba(126,168,154,.5)">Escola Politécnica da USP · Maio 2026</span></p>
+    </div>
+    <img id="logo-final" src="data:image/png;base64,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" alt="Capim" style="height:90px;width:auto;display:block;opacity:.9">
+  </div>
 </div>
 
 </div><!-- /slides -->
@@ -607,8 +612,8 @@ function goTo(n){
   setTimeout(()=>slides[current].classList.remove('exit'),600);
   current=n;
   slides[current].classList.add('active');
-  document.getElementById('counter').textContent=`${current+1} / ${total}`;
-  document.getElementById('progress').style.width=`${((current+1)/total)*100}%`;
+  document.getElementById('counter').textContent=current+1+' / '+total;
+  document.getElementById('progress').style.width=((current+1)/total*100)+'%';
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current));
 }
 document.getElementById('btn-prev').addEventListener('click',()=>goTo(current-1));
@@ -617,7 +622,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();goTo(current+1);}
   if(e.key==='ArrowLeft')goTo(current-1);
 });
-document.getElementById('progress').style.width=`${(1/total)*100}%`;
+document.getElementById('progress').style.width=(1/total*100)+'%';
 </script>
 </body>
 </html>
