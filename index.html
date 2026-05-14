@@ -92,13 +92,15 @@
     #slide-1{align-items:flex-start;padding:70px 90px;}
     #slide-1::after{content:'';position:absolute;right:0;top:0;bottom:0;width:38%;background:linear-gradient(135deg,rgba(61,184,122,.12) 0%,rgba(61,184,122,.05) 100%);clip-path:polygon(20% 0%,100% 0%,100% 100%,0% 100%);}
     /* ── TAM CIRCLES ── */
-    .circles-row{display:flex;align-items:center;gap:24px;padding:8px 0;}
-    .cw{display:flex;flex-direction:column;align-items:center;gap:6px;}
-    .circ{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid var(--green);}
-    .circ .cn{font-family:var(--serif);color:var(--green);line-height:1.1;}
-    .circ .cl{font-size:.52rem;color:var(--muted);}
-    .cw .ct{font-size:.6rem;font-weight:700;letter-spacing:.1em;color:var(--green3);text-transform:uppercase;}
-    .cw .cd{font-size:.6rem;color:var(--muted);text-align:center;max-width:100px;line-height:1.4;}
+    .circles-wrap{display:flex;flex-direction:column;gap:0;}
+    .circles-row{display:flex;align-items:center;justify-content:center;gap:24px;}
+    .circles-labels{display:flex;align-items:flex-start;gap:24px;margin-top:10px;}
+    .circ{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid var(--green);flex-shrink:0;}
+    .circ .cn{font-family:var(--serif);color:var(--green);line-height:1.1;text-align:center;}
+    .circ .cl{font-size:.52rem;color:var(--muted);text-align:center;}
+    .circ-label{display:flex;flex-direction:column;align-items:center;gap:3px;}
+    .circ-label .ct{font-size:.6rem;font-weight:700;letter-spacing:.1em;color:var(--green3);text-transform:uppercase;}
+    .circ-label .cd{font-size:.6rem;color:var(--muted);text-align:center;line-height:1.4;}
     /* ── DOTS ── */
     #dots{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:200;}
     .dot{width:5px;height:5px;border-radius:50%;background:rgba(61,184,122,.25);cursor:pointer;transition:background .3s,transform .3s;}
@@ -108,6 +110,17 @@
     .capim-logo{display:block;}
     /* ── THANK YOU SLIDE ── */
     #slide-13{background:var(--navy);text-align:center;align-items:center;justify-content:center;}
+
+    /* ── PDF / PRINT ── */
+    #print-btn{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(61,184,122,.12);border:1px solid rgba(61,184,122,.3);color:var(--green3);font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;cursor:pointer;z-index:300;font-family:var(--sans);transition:background .2s;}
+    #print-btn:hover{background:rgba(61,184,122,.25);}
+    @media print{
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      #progress,#counter,#btn-prev,#btn-next,#dots,#print-btn,.presenter{display:none!important;}
+      body,html{overflow:visible!important;background:#0B2136!important;}
+      #slides{height:auto!important;overflow:visible!important;position:static!important;}
+      .slide{position:relative!important;inset:auto!important;opacity:1!important;transform:none!important;pointer-events:all!important;display:flex!important;width:100vw;height:100vh;page-break-after:always;break-after:page;}
+    }
   </style>
 </head>
 <body>
@@ -128,6 +141,7 @@
     <span style="font-size:.86rem;color:rgba(244,249,246,.75)">Augusto Ribeiro · Gabriel Axel · Guilherme Lourenço · Pedro Favero · Thalles Lettieri</span>
     <span style="font-size:.76rem;color:rgba(126,168,154,.55)">Escola Politécnica da USP · Maio de 2026 · Prof. Mario Sergio Salerno</span>
   </div>
+  <button id="print-btn" onclick="window.print()">⬇ exportar PDF</button>
   <span class="presenter">Pedro</span>
 </div>
 
@@ -192,30 +206,25 @@
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:30px;margin-top:12px">
-      <div class="circles-row">
-        <div class="cw">
+      <div class="circles-wrap">
+        <div class="circles-row">
           <div class="circ" style="width:158px;height:158px;background:rgba(61,184,122,.06)">
             <div class="cn" style="font-size:1rem">R$6B – R$12B</div>
             <div class="cl">/ ano</div>
           </div>
-          <span class="ct">TAM</span>
-          <span class="cd">Mercado odontológico privado total</span>
-        </div>
-        <div class="cw">
           <div class="circ" style="width:118px;height:118px;background:rgba(61,184,122,.1)">
             <div class="cn" style="font-size:.8rem">R$2,4B – R$6B</div>
             <div class="cl">/ ano</div>
           </div>
-          <span class="ct">SAM</span>
-          <span class="cd">Clínicas privadas com perfil digital</span>
-        </div>
-        <div class="cw">
           <div class="circ" style="width:82px;height:82px;background:rgba(61,184,122,.2)">
             <div class="cn" style="font-size:.62rem">R$600M</div>
             <div class="cl">– R$1,2B</div>
           </div>
-          <span class="ct">SOM</span>
-          <span class="cd">20–25% penetração em 5 anos</span>
+        </div>
+        <div class="circles-labels">
+          <div class="circ-label" style="width:158px"><span class="ct">TAM</span><span class="cd">Mercado odontológico privado total</span></div>
+          <div class="circ-label" style="width:118px"><span class="ct">SAM</span><span class="cd">Clínicas privadas com perfil digital</span></div>
+          <div class="circ-label" style="width:82px"><span class="ct">SOM</span><span class="cd">20–25% penetração em 5 anos</span></div>
         </div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:7px">
