@@ -114,6 +114,13 @@
     /* ── PDF / PRINT ── */
     #print-btn{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(61,184,122,.12);border:1px solid rgba(61,184,122,.3);color:var(--green3);font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;cursor:pointer;z-index:300;font-family:var(--sans);transition:background .2s;}
     #print-btn:hover{background:rgba(61,184,122,.25);}
+
+    /* ====== LOGO_ON — remover este bloco para reverter ====== */
+    .logo-slide{display:block;width:80px;margin-bottom:20px;position:relative;z-index:1;}
+    .logo-thanks{display:block;width:130px;opacity:.92;margin:0 auto;}
+    .watermark{position:absolute;bottom:18px;right:22px;width:56px;opacity:.5;pointer-events:none;z-index:50;}
+    @media print{.watermark{display:block!important;}}
+    /* ====== /LOGO_ON ====== */
     @page{size:landscape;margin:0;}
     @media print{
       *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
@@ -135,6 +142,7 @@
 <!-- SLIDE 1: INTRODUÇÃO -->
 <div class="slide active" id="slide-1">
   <div class="logo-mark" style="margin-bottom:22px;position:relative;z-index:1;">C</div>
+  <!-- LOGO_ON --><img src="./logomarca.png" class="logo-slide" alt="Capim"><!-- /LOGO_ON -->
   <span class="tag" style="position:relative;z-index:1;">PRO3584 · Gestão da Inovação · Grupo 6</span>
   <h1 style="position:relative;z-index:1;">Capim <em>Software</em></h1>
   <p class="sub" style="position:relative;z-index:1;font-size:1rem;color:rgba(244,249,246,.85);max-width:680px;">Uma análise da gestão da inovação na healthtech + fintech para clínicas odontológicas</p>
@@ -644,5 +652,17 @@ document.addEventListener('keydown',e=>{
 });
 document.getElementById('progress').style.width=`${(1/total)*100}%`;
 </script>
+
+  <!-- WATERMARK_ON — remover este bloco para reverter -->
+  <script>
+    document.querySelectorAll('.slide:not(#slide-1):not(#slide-13)').forEach(function(s){
+      var img = document.createElement('img');
+      img.src = "./logomarca.png";
+      img.className = 'watermark';
+      img.alt = '';
+      s.appendChild(img);
+    });
+  </script>
+  <!-- /WATERMARK_ON -->
 </body>
 </html>
