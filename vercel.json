@@ -2,9 +2,10 @@
   "name": "inova-poli",
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "**/*", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/logomarca.png", "dest": "/logomarca.png" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
