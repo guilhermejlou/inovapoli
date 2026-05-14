@@ -114,6 +114,7 @@
     /* ── PDF / PRINT ── */
     #print-btn{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(61,184,122,.12);border:1px solid rgba(61,184,122,.3);color:var(--green3);font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;cursor:pointer;z-index:300;font-family:var(--sans);transition:background .2s;}
     #print-btn:hover{background:rgba(61,184,122,.25);}
+    @page{size:landscape;margin:0;}
     @media print{
       *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       #progress,#counter,#btn-prev,#btn-next,#dots,#print-btn,.presenter{display:none!important;}
