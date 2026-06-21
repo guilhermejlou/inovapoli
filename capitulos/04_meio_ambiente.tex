@@ -29,19 +29,24 @@ A demanda é majoritariamente privada: 68\% dos brasileiros visitaram um dentist
 
 A Figura~\ref{fig:tam-sam-som} ilustra a redução sucessiva do mercado endereçável; as premissas de cada nível estão detalhadas a seguir.
 
-\begin{figure}[H]
-  \centering
-  \begin{tikzpicture}[font=\small,
-      tier/.style={draw, fill=gray!12, align=center, trapezium,
-                   trapezium left angle=70, trapezium right angle=110,
-                   trapezium stretches=true, minimum height=14mm, inner sep=2pt},
-      node distance=0mm]
-    \node[tier, minimum width=70mm] (tam) {\textbf{TAM} -- R\$~30--40 bi/ano};
-    \node[tier, minimum width=46mm, below=2mm of tam, fill=gray!20] (sam) {\textbf{SAM} -- R\$~10--12 bi/ano};
-    \node[tier, minimum width=24mm, below=2mm of sam, fill=blue!12] (som) {\textbf{SOM} -- R\$~180--500 mi/ano};
-  \end{tikzpicture}
+\begin{figure}[h]
   \caption{Funil TAM, SAM e SOM da Capim}
   \label{fig:tam-sam-som}
+  \centering
+  \begin{tikzpicture}[font=\small]
+    \fill[gray!10]  (-4,6) -- (4,6)  -- (2.4,4) -- (-2.4,4) -- cycle;
+    \fill[gray!22]  (-2.4,4) -- (2.4,4) -- (1.2,2) -- (-1.2,2) -- cycle;
+    \fill[blue!18]  (-1.2,2) -- (1.2,2) -- (0.6,0) -- (-0.6,0) -- cycle;
+    \draw[thick] (-4,6) -- (4,6) -- (0.6,0) -- (-0.6,0) -- cycle;
+    \draw[thick] (-2.4,4) -- (2.4,4);
+    \draw[thick] (-1.2,2) -- (1.2,2);
+    \node[font=\bfseries] at (0,5) {TAM};
+    \node[anchor=west] at (4.3,5) {R\$~30--40 bi/ano};
+    \node[font=\bfseries] at (0,3) {SAM};
+    \node[anchor=west] at (4.3,3) {R\$~10--12 bi/ano};
+    \node[font=\bfseries] at (0,1) {SOM};
+    \node[anchor=west] at (4.3,1) {R\$~180--500 mi/ano};
+  \end{tikzpicture}
   \legend{Fonte: estimativas dos autores a partir de dados secundários -- a confirmar.}
 \end{figure}
 
@@ -65,7 +70,7 @@ O Simples Dental oferece integração com a Parcela Mais, fintech especializada 
 
 A Tabela~\ref{tab:concorrentes} resume o posicionamento dos principais players nas três camadas de produto.
 
-\begin{table}[H]
+\begin{table}[h]
   \centering
   \caption{Comparativo de concorrentes por camada de produto}
   \label{tab:concorrentes}

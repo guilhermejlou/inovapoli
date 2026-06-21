@@ -26,7 +26,7 @@ A governança da inovação na Capim é desenhada para dar autonomia aos times, 
 
 O ciclo de vida dos projetos experimentais segue uma adaptação própria de \textit{stage-gates}, em que o avanço de um projeto desencadeia o envolvimento progressivo do restante da organização (Tabela~\ref{tab:gates}). A progressão entre estágios é controlada pelo número de clínicas parceiras expostas ao experimento -- de 5--10, para 50--100, até cerca de 500 --, e não por um calendário fixo.
 
-\begin{table}[H]
+\begin{table}[h]
   \centering
   \caption{Estágios do processo decisório da Capim}
   \label{tab:gates}
@@ -61,7 +61,9 @@ Essa descrição, por si só, já indica uma governança mais sofisticada do que
 
 Ao classificar as linhas de produto da Capim segundo essa tipologia (Figura~\ref{fig:matriz-incerteza} e Tabela~\ref{tab:tipologia}), observa-se que a empresa, na prática, já opera mais de um tipo de processo simultaneamente -- mas sem reconhecer essa diferença formalmente na governança. A classificação a seguir é uma leitura analítica dos autores deste relatório à luz da tipologia, não uma categorização declarada pela própria empresa, e deve ser validada com a equipe.
 
-\begin{figure}[H]
+\begin{figure}[h]
+  \caption{Iniciativas da Capim no plano de incerteza mercado~$\times$~tecnologia}
+  \label{fig:matriz-incerteza}
   \centering
   \resizebox{!}{6.5cm}{%
   \begin{tikzpicture}[
@@ -83,12 +85,10 @@ Ao classificar as linhas de produto da Capim segundo essa tipologia (Figura~\ref
     \node[init, fill=blue!10] at (2.8,7.0) {CamilA};
     \node[init, fill=blue!10] at (7.2,3.2) {Modelo B2C};
   \end{tikzpicture}}
-  \caption{Iniciativas da Capim no plano de incerteza mercado~$\times$~tecnologia}
-  \label{fig:matriz-incerteza}
   \legend{Fonte: elaborado pelos autores a partir de \textcite{salerno2015}. Posicionamento é interpretação analítica, a validar com a empresa.}
 \end{figure}
 
-\begin{table}[H]
+\begin{table}[h]
   \centering
   \caption{Classificação das iniciativas da Capim segundo a tipologia de \textcite{salerno2015}}
   \label{tab:tipologia}
@@ -114,7 +114,9 @@ O ponto central deste diagnóstico é que a Capim aplica essencialmente \textbf{
 
 Aplicando esse diagnóstico à Capim:
 
-\begin{figure}[H]
+\begin{figure}[h]
+  \caption{Cadeia de valor da inovação da Capim}
+  \label{fig:cadeia-valor}
   \centering
   \begin{tikzpicture}[font=\small, node distance=8mm,
       elo/.style={draw, rounded corners, fill=gray!15, minimum height=11mm, text width=26mm, align=center}]
@@ -124,8 +126,6 @@ Aplicando esse diagnóstico à Capim:
     \draw[-{Stealth[length=2.5mm]}] (g)--(c);
     \draw[-{Stealth[length=2.5mm]}] (c)--(d);
   \end{tikzpicture}
-  \caption{Cadeia de valor da inovação da Capim}
-  \label{fig:cadeia-valor}
   \legend{Fonte: elaborado pelos autores a partir de \textcite{hansenbirkinshaw2007}.}
 \end{figure}
 
@@ -142,7 +142,9 @@ Esse diagnóstico responde à devolutiva do professor sobre se a empresa tem um 
 
 \textcite{goffinmitchell2010} propõem avaliar o portfólio de projetos \textbf{ativos} de inovação por meio de uma matriz de risco e retorno, classificando iniciativas em quatro quadrantes: \textit{Pearls} (alto retorno, baixo risco), \textit{Oysters} (alto retorno, alto risco), \textit{White Elephants} (baixo retorno, alto risco) e \textit{Bread and Butter} (baixo retorno, baixo risco -- tipicamente projetos incrementais).
 
-\begin{figure}[H]
+\begin{figure}[h]
+  \caption{Carteira ativa da Capim na matriz risco-retorno de \textcite{goffinmitchell2010}}
+  \label{fig:portfolio-bolhas}
   \centering
   \resizebox{!}{6.5cm}{%
   \begin{tikzpicture}[
@@ -166,12 +168,10 @@ Esse diagnóstico responde à devolutiva do professor sobre se a empresa tem um 
     \node[draw, dashed, circle, minimum size=15mm, gray!50] at (2.3,6.8) {};
     \node[gray!60, font=\scriptsize\itshape, align=center] at (2.3,6.8) {(vazio)};
   \end{tikzpicture}}
-  \caption{Carteira ativa da Capim na matriz risco-retorno de \textcite{goffinmitchell2010}}
-  \label{fig:portfolio-bolhas}
   \legend{Fonte: elaborado pelos autores. O quadrante \textit{Pearls} aparece vazio nas quatro iniciativas conhecidas -- amostra pequena, ver ressalva no texto.}
 \end{figure}
 
-\begin{table}[H]
+\begin{table}[h]
   \centering
   \caption{Carteira ativa de iniciativas da Capim na matriz risco-retorno}
   \label{tab:portfolio}
@@ -195,7 +195,9 @@ A ausência de iniciativas classificáveis como \textit{Pearls} é consistente c
 
 \textcite{salernogomes2018} descrevem o modelo de três macroatividades -- Descoberta, Incubação e Aceleração (DNA) -- segundo o qual sistemas de gestão da inovação mais radical precisam diferenciar explicitamente a governança de cada fase, em vez de tratar toda inovação com o mesmo processo. A Figura~\ref{fig:funil-dna} mapeia os estágios da Capim a esse modelo.
 
-\begin{figure}[H]
+\begin{figure}[h]
+  \caption{Macroatividades DNA \textit{versus} estágios Garagem da Capim}
+  \label{fig:funil-dna}
   \centering
   \begin{tikzpicture}[
       font=\small, node distance=0mm,
@@ -213,8 +215,6 @@ A ausência de iniciativas classificáveis como \textit{Pearls} é consistente c
     \draw[-{Stealth[length=3mm]}, thick] (desc.east) -- (inc.west);
     \draw[-{Stealth[length=3mm]}, thick] (inc.east) -- (acc.west);
   \end{tikzpicture}
-  \caption{Macroatividades DNA \textit{versus} estágios Garagem da Capim}
-  \label{fig:funil-dna}
   \legend{Fonte: elaborado pelos autores a partir de \textcite{salernogomes2018} e da entrevista com Lucas Mathias (2026). Não há etapa de Descoberta correspondente confirmada na entrevista.}
 \end{figure}
 
