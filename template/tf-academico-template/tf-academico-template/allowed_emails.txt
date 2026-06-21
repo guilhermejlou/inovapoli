@@ -1,0 +1,14 @@
+# ============================================================
+# LISTA DE E-MAILS COM ACESSO AO TRABALHO
+# ============================================================
+# Um e-mail por linha.
+# Linhas com # são comentários e são ignoradas.
+# ============================================================
+
+# Orientador
+orientador@universidade.edu.br
+
+# Autor
+voce@email.com
+
+# Banca / Outros

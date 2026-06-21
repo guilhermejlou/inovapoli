@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "tf-bi-lowcost",
+  "public": true,
+  "outputDirectory": "site",
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/login",    "dest": "/api/login" },
+    { "src": "/(.*)",     "dest": "/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/main.pdf",
+      "headers": [
+        { "key": "Content-Type",  "value": "application/pdf" },
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
+    }
+  ]
+}

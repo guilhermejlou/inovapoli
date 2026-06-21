@@ -1,0 +1,145 @@
+% ==============================================================
+% CAPÍTULO 6 — ANÁLISE DO PROCESSO DECISÓRIO DE INOVAÇÃO
+% ==============================================================
+
+\chapter{Análise do Processo Decisório de Inovação}
+\label{cap:processo-decisorio}
+
+Este é o capítulo central do relatório. Diferentemente da versão anterior do trabalho -- em que o processo decisório foi descrito de forma majoritariamente narrativa --, esta versão aplica diretamente ao caso da Capim os quatro frameworks de gestão da inovação apresentados na Seção~\ref{cap:metodologia}: a tipologia contingencial de processos de inovação, a cadeia de valor da inovação, a gestão de portfólio por risco e retorno, e o modelo de ambidestria Descoberta--Incubação--Aceleração.
+
+\section{Visão Geral do Processo Decisório Atual}
+
+A Capim não utiliza nenhum sistema formal e documentado de gestão da inovação, do tipo manual de processos ou metodologia com nome próprio. Sua governança da inovação combina, de forma pragmática, princípios ágeis de desenvolvimento de software com uma lógica própria de estágios sucessivos, inspirada em -- mas não idêntica a -- modelos clássicos de \textit{stage-gates} \cite{cooper1990}.
+
+\subsection{Participantes e comitês}
+
+A governança da inovação na Capim é desenhada para dar autonomia aos times, mantendo o alinhamento estratégico da liderança, por meio de quatro grupos de responsabilidade:
+
+\begin{description}
+  \item[Times de produto autônomos] cada squad foca em iterar e construir funcionalidades de forma ágil para seu produto.
+  \item[Diretoria de Produto] coordenação centralizada cujo papel principal é evitar interferências e sobreposições de trabalho entre squads.
+  \item[Comitê tático] reuniões quinzenais com todos os PMs e o time de design, para sincronização do desenvolvimento.
+  \item[Comitê estratégico] reunião semanal entre CEO, Diretoria de Produto, liderança de tecnologia e o PM de experimentos, na qual se definem rumos e se tratam problemas críticos.
+\end{description}
+
+\subsection{Pontos de decisão e gates}
+
+O ciclo de vida dos projetos experimentais segue uma adaptação própria de \textit{stage-gates}, em que o avanço de um projeto desencadeia o envolvimento progressivo do restante da organização (Tabela~\ref{tab:gates}). A progressão entre estágios é controlada pelo número de clínicas parceiras expostas ao experimento -- de 5--10, para 50--100, até cerca de 500 --, e não por um calendário fixo.
+
+\begin{table}[H]
+  \centering
+  \caption{Estágios do processo decisório da Capim}
+  \label{tab:gates}
+  \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Estágio} & \textbf{Características} & \textbf{Times envolvidos} \\
+    \midrule
+    Garagem 2 & Maior incerteza. Time isolado testa hipóteses sem impactar a operação geral. 5--10 clínicas parceiras. & Produto (isolado) \\
+    Garagem 1 & Estágio intermediário de transição e evolução do experimento. 50--100 clínicas expostas. & Produto + marketing + engenharia \\
+    Rua & Produto maduro, lançado e tratado como item de prateleira. 500+ clínicas. & + onboarding, suporte e comercial \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+\subsection{Critérios de decisão e gestão da incerteza}
+
+Os critérios de \textit{go/no-go} para manter, cancelar ou pausar um projeto não dependem de um ciclo de vida estável -- a Capim não trata nenhum produto como estando em ``mera manutenção''. Em vez disso, adota três mecanismos:
+
+\begin{enumerate}
+  \item \textbf{Métrica de sucesso específica por iniciativa}, definida no início de cada projeto e revisável ao longo da execução -- por exemplo, o projeto de aquisição B2C de pacientes mudou sua métrica-alvo de ``contratos de crédito assinados'' para ``tratamentos fechados pelas clínicas parceiras'' após aprendizado empírico sobre o que de fato gerava valor.
+  \item \textbf{Ciclos trimestrais de avaliação}, com disciplina organizacional de não desistir prematuramente -- a equipe ``luta pelo projeto até o fim do trimestre''.
+  \item \textbf{Congelamento \textit{versus} descontinuação}: se o projeto falha no trimestre, pode ser desligado e documentado, ou ``congelado'' aguardando maturação tecnológica -- como ocorreu com a CamilA, assistente de IA que continua ativa para as clínicas que já a utilizam, mas sem novos investimentos de desenvolvimento.
+\end{enumerate}
+
+Essa descrição, por si só, já indica uma governança mais sofisticada do que a simples ausência de processo. As seções a seguir avaliam essa governança à luz dos frameworks da disciplina.
+
+\section{Classificação pela Tipologia de Processos de Inovação}
+\label{sec:tipologia}
+
+\textcite{salerno2015} argumentam, a partir de teoria contingencial, que não existe um único processo ``correto'' de inovação aplicável a qualquer projeto: o processo adequado depende do grau de incerteza de mercado e de tecnologia e do papel do cliente na especificação da solução. Os autores propõem uma tipologia de oito processos, dos quais quatro são particularmente relevantes para a Capim: o processo \textit{tradicional} (da ideia ao lançamento, adequado a inovações incrementais em mercado e tecnologia maduros); o processo de \textit{atividades paralelas} (em que a comercialização começa antes de o desenvolvimento estar concluído, típico de software); e os processos de \textit{pausa} -- esperando o mercado, esperando a tecnologia, ou ambos -- em que o projeto é deliberadamente suspenso até que uma condição externa se resolva.
+
+Ao classificar as linhas de produto da Capim segundo essa tipologia (Tabela~\ref{tab:tipologia}), observa-se que a empresa, na prática, já opera mais de um tipo de processo simultaneamente -- mas sem reconhecer essa diferença formalmente na governança.
+
+\begin{table}[H]
+  \centering
+  \caption{Classificação das iniciativas da Capim segundo a tipologia de \textcite{salerno2015}}
+  \label{tab:tipologia}
+  \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Iniciativa} & \textbf{Tipo de processo predominante} & \textbf{Implicação} \\
+    \midrule
+    Sistema de gestão (lembretes, melhorias incrementais) & Tradicional (idea-to-launch) & Mercado e tecnologia maduros; \textit{stage-gates} trimestrais são adequados. \\
+    Capix (crédito via Pix) & Tradicional, com elementos de atividades paralelas & Incerteza baixa; lançamento incremental sobre fluxo já existente (WhatsApp $\rightarrow$ interface dedicada). \\
+    CamilA (IA conversacional de vendas) & Pausa esperando avanço tecnológico + atividades paralelas & Tratada na prática como projeto tradicional com métrica trimestral fixa; a tipologia indica que deveria ser formalmente reconhecida como \textit{pausa ativa}, não como falha do processo tradicional. \\
+    Modelo B2C (``Uber dos dentistas'') & Pausa esperando o mercado / atividades paralelas & Alta incerteza de mercado (resposta de clínicas e pacientes a um modelo de relação inédito); aplicar o mesmo ciclo trimestral rígido do processo tradicional tende a subestimar o tempo de aprendizado necessário. \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores.}
+\end{table}
+
+O ponto central deste diagnóstico é que a Capim aplica essencialmente \textbf{um único regime de governança} -- métrica por iniciativa mais ciclo trimestral de \textit{go/no-go} -- a projetos que, pela tipologia de \textcite{salerno2015}, pertencem a categorias de processo distintas. Isso é particularmente visível no caso da CamilA: o relato da entrevista descreve o desfecho do projeto como um ``congelamento'' decidido ao fim do ciclo trimestral por não atingimento da métrica -- mas a causa-raiz apontada pelo próprio entrevistado é a imaturidade da tecnologia de IA generativa disponível no período, ou seja, exatamente a condição que define um processo de \textit{pausa esperando avanço tecnológico}. Sem o reconhecimento formal desse tipo de processo, a empresa corre o risco de reavaliar a CamilA nos próximos ciclos com o mesmo critério financeiro/de adoção que usaria para um produto maduro, em vez de um critério de prontidão tecnológica.
+
+\section{Diagnóstico pela Cadeia de Valor da Inovação}
+\label{sec:cadeia-valor}
+
+\textcite{hansenbirkinshaw2007} propõem enxergar a inovação como uma cadeia de valor de três elos -- \textit{geração de ideias} (interna, entre unidades e externa), \textit{conversão} (seleção, financiamento e desenvolvimento) e \textit{difusão} (disseminação pela organização) -- e argumentam que a capacidade de inovação de uma empresa é limitada pelo elo mais fraco da cadeia, não pela média dos três.
+
+Aplicando esse diagnóstico à Capim:
+
+\begin{description}
+  \item[Conversão -- elo forte.] A empresa possui um mecanismo claro de seleção e financiamento: métricas de sucesso por iniciativa, ciclos trimestrais de avaliação e critérios diferenciados para congelamento \textit{versus} descontinuação. Squads autônomos com orçamento e mandato próprio desenvolvem as iniciativas selecionadas.
+  \item[Difusão -- elo forte.] A progressão controlada por número de clínicas expostas (5--10 $\rightarrow$ 50--100 $\rightarrow$ 500+) é, em essência, um mecanismo de difusão gradual e deliberado, que aciona times de suporte, onboarding e comercial apenas quando o produto está maduro para tanto -- evitando o despreparo organizacional.
+  \item[Geração de ideias -- elo não evidenciado.] Em nenhum momento da entrevista foi descrito um mecanismo formal de captação ou geração de ideias -- nem interno (mecanismos de polinização cruzada entre squads), nem externo (escuta estruturada de clínicas, dentistas ou parceiros de tecnologia). As iniciativas mencionadas (Capix, CamilA, modelo B2C) parecem emergir de decisões da liderança ou de oportunidades identificadas de forma ad hoc pelo PM de experimentos, e não de um processo sistemático de descoberta.
+\end{description}
+
+Esse diagnóstico responde diretamente à pergunta levantada na devolutiva do professor sobre se a empresa tem um problema de geração de ideias: \textbf{sim, há indícios de que esse é o elo mais fraco da cadeia de valor da inovação da Capim}. A empresa investiu em mecanismos sofisticados de conversão e difusão, mas não em um mecanismo equivalente de geração e descoberta de oportunidades -- o que é desenvolvido com mais detalhe no Capítulo~\ref{cap:diagnostico-proposta}.
+
+\section{Portfólio de Inovação: Risco e Retorno}
+\label{sec:portfolio}
+
+\textcite{goffinmitchell2010} propõem avaliar o portfólio de projetos de inovação por meio de uma matriz de risco e retorno, classificando iniciativas em quatro quadrantes: \textit{Pearls} (alto retorno, baixa incerteza), \textit{Oysters} (alto retorno, alta incerteza), \textit{White Elephants} (baixo retorno, alta incerteza) e \textit{Bread and Butter} (baixo retorno, baixa incerteza -- tipicamente projetos incrementais).
+
+\begin{table}[H]
+  \centering
+  \caption{Carteira de iniciativas da Capim na matriz risco-retorno}
+  \label{tab:portfolio}
+  \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Quadrante} & \textbf{Iniciativas da Capim} & \textbf{Leitura} \\
+    \midrule
+    Bread and Butter (baixo risco, retorno previsível) & Sistema de gestão (melhorias incrementais), Capix & Núcleo de manutenção e melhoria contínua da base instalada; bem servido pelo processo tradicional de \textit{stage-gates}. \\
+    Oysters (alto risco, alto retorno potencial) & CamilA, modelo B2C (``Uber dos dentistas'') & \textit{Home runs} aguardando validação; exigem tolerância a incerteza prolongada e critérios de avaliação não puramente financeiros. \\
+    White Elephants (alto risco, retorno incerto) & Iniciativas descontinuadas sem registro sistemático (mencionadas apenas informalmente como ``deu errado'') & Risco de a empresa não capturar aprendizado de projetos encerrados, por falta de documentação estruturada. \\
+    Pearls (baixo risco, alto retorno) & Não identificado claramente no relato & Possível sinal de que o portfólio carece de iniciativas já validadas tecnicamente, mas ainda não escaladas -- typically alimentadas por um funil de descoberta robusto. \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+A ausência de iniciativas claramente classificáveis como \textit{Pearls} reforça o diagnóstico da Seção~\ref{sec:cadeia-valor}: sem um funil de descoberta que amadureça oportunidades de baixo risco e alto retorno antes de irem a mercado, o portfólio da Capim tende a se polarizar entre projetos incrementais de baixo risco (\textit{Bread and Butter}) e apostas radicais de alto risco (\textit{Oysters}), sem o estágio intermediário que tipicamente preencheria o quadrante de \textit{Pearls}.
+
+\section{Ambidestria: Descoberta, Incubação e Aceleração}
+\label{sec:ambidestria}
+
+\textcite{salernogomes2018} descrevem o modelo de três macroatividades -- Descoberta, Incubação e Aceleração (DNA) -- segundo o qual sistemas de gestão da inovação mais radical precisam diferenciar explicitamente a governança de cada fase, em vez de tratar toda inovação com o mesmo processo. Mapeando os estágios da Capim a esse modelo (Tabela~\ref{tab:dna}):
+
+\begin{table}[H]
+  \centering
+  \caption{Estágios da Capim mapeados ao modelo Descoberta-Incubação-Aceleração}
+  \label{tab:dna}
+  \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Macroatividade} & \textbf{Equivalente na Capim} & \textbf{Observação} \\
+    \midrule
+    Descoberta & \textbf{Não formalizada} & Não há hub, função ou rito dedicado à busca ativa de oportunidades antes da Garagem~2; o projeto já ``nasce'' como hipótese a testar. \\
+    Incubação & Garagem 2 & Time isolado testa hipóteses com 5--10 clínicas parceiras, protegido da operação corrente. \\
+    Aceleração & Garagem 1 $\rightarrow$ Rua & Envolvimento progressivo de marketing, engenharia, suporte e comercial conforme a base de clínicas expostas cresce. \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir de \textcite{salernogomes2018} e da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+A Capim, portanto, já pratica uma forma de ambidestria estrutural ao isolar a Garagem~2 do restante da operação -- mecanismo equivalente ao que \textcite{hansenbirkinshaw2007} chamam de ``\textit{safe haven}'' para a fase de conversão. O que está ausente é a etapa de \textbf{Descoberta} propriamente dita: segundo \textcite{salernogomes2018}, geração de ideias tradicional (sugestão avaliada em um comitê) não equivale a Descoberta, que envolve visão simultânea de oportunidade de mercado e plataforma tecnológica, tipicamente sustentada por uma função ou ``hub'' de inovação dedicado. \textcite{oconnormeyer2026} chegam à mesma conclusão a partir de pesquisa mais recente: tratar a inovação estratégica como função permanente -- com Descoberta como competência organizacional dedicada, e não apenas como etapa implícita antes da incubação.
+
+Adicionalmente, tanto \textcite{salernogomes2018} quanto \textcite{oconnormeyer2026} enfatizam que projetos incrementais e radicais devem ser geridos por sistemas de decisão \textbf{diferentes} -- não apenas por equipes diferentes. Na Capim, a separação de equipes (squads \textit{versus} Garagem~2) já existe, mas os \textbf{critérios de decisão} permanecem os mesmos para ambos os tipos de projeto: uma métrica quantitativa fixada no início e avaliada ao fim do trimestre. \textcite{salernogomes2018} mostram, a partir de casos reais, que aplicar critérios financeiros ou de adoção típicos do processo tradicional a projetos de alta incerteza tende a gerar decisões equivocadas de descontinuação precoce -- risco que se materializa no caso da CamilA, analisado na Seção~\ref{sec:tipologia}. Essa constatação fundamenta diretamente a proposta de adoção de um \textit{learning plan} formal, desenvolvida no Capítulo~\ref{cap:diagnostico-proposta}.

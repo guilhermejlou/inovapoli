@@ -1,0 +1,52 @@
+name: Compilar LaTeX → PDF
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest
+
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Compilar LaTeX
+        run: |
+          pdflatex -interaction=nonstopmode -file-line-error main.tex || true
+          biber main || true
+          pdflatex -interaction=nonstopmode -file-line-error main.tex || true
+          pdflatex -interaction=nonstopmode -file-line-error main.tex
+          echo "Compilação concluída"
+          ls -lh main.pdf
+
+      - name: Publicar PDF em site/
+        run: |
+          mkdir -p site
+          cp main.pdf site/main.pdf
+          echo "Última compilação: $(TZ='America/Sao_Paulo' date '+%d/%m/%Y às %H:%M') (Brasília)" > site/last_build.txt
+          echo "Commit: ${{ github.sha }}" >> site/last_build.txt
+
+      - name: Configurar git
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit e push do PDF
+        run: |
+          git add site/main.pdf site/last_build.txt
+          git diff --staged --quiet && echo "Sem mudanças." || (
+            git commit -m "ci: atualiza PDF compilado [skip ci]" &&
+            git push origin HEAD:${{ github.ref_name }}
+          )

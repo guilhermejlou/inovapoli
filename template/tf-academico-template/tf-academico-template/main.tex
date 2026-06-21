@@ -1,0 +1,89 @@
+% ==============================================================
+% TRABALHO ACADÊMICO — TEMPLATE
+% Universidade / Curso / Área
+% Autor: [Seu Nome]
+% Orientador: [Nome do Orientador]
+% ==============================================================
+% ⚠ INSTRUÇÕES:
+%   Substitua todos os campos marcados com [PREENCHER]
+%   Remova ou adapte seções conforme necessário
+% ==============================================================
+
+\documentclass[
+    12pt, openright, twoside, a4paper,
+    chapter=TITLE, section=TITLE,
+    english, brazil
+]{abntex2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage[style=abnt, backend=biber]{biblatex}
+
+\geometry{top=3cm, bottom=2cm, left=3cm, right=2cm}
+
+\addbibresource{referencias/referencias.bib}
+
+\hypersetup{
+    colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue,
+    pdftitle={[PREENCHER: Título do Trabalho]},
+    pdfauthor={[PREENCHER: Seu Nome]},
+}
+
+% ── Dados do documento ──────────────────────────────────────
+\titulo{[PREENCHER: Título completo do trabalho]}
+\autor{[PREENCHER: Seu Nome Completo]}
+\local{[PREENCHER: Cidade]}
+\data{[PREENCHER: Ano]}
+\orientador{[PREENCHER: Prof. Dr. Nome do Orientador]}
+\instituicao{[PREENCHER: Nome da Universidade]}
+\tipotrabalho{[PREENCHER: Trabalho de Formatura / Dissertação / TCC]}
+\preambulo{[PREENCHER: Descrição do trabalho, curso, área de concentração.]}
+
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing
+
+% ── Pré-textuais ────────────────────────────────────────────
+\pretextual
+\include{pretextual/capa}
+\include{pretextual/folha_rosto}
+\include{pretextual/pendencias}   % ← Remover antes da entrega final
+\include{pretextual/resumo}
+\include{pretextual/abstract}
+\include{pretextual/listas}
+\include{pretextual/sumario}
+
+% ── Textuais ─────────────────────────────────────────────────
+\textual
+\include{capitulos/01_introducao}
+\include{capitulos/02_revisao_conceitual}
+\include{capitulos/03_metodologia}
+\include{capitulos/04_desenvolvimento}
+\include{capitulos/05_resultados}
+\include{capitulos/06_conclusao}
+
+% ── Pós-textuais ─────────────────────────────────────────────
+\postextual
+\printbibliography[heading=bibintoc, title={REFERÊNCIAS}]
+\include{postextual/apendices}
+
+\end{document}

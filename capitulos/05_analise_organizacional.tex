@@ -1,0 +1,156 @@
+% ==============================================================
+% CAPÍTULO 5 — ANÁLISE ORGANIZACIONAL
+% ==============================================================
+
+\chapter{Análise Organizacional}
+\label{cap:analise-organizacional}
+
+Esta seção analisa a estrutura organizacional da Capim Software a partir de três perspectivas complementares: hierarquia interna, Estrela de Galbraith, configuração de Mintzberg e análise SWOT. As informações têm como base a entrevista com Lucas Mathias, PM de experimentos e integrante do time fundador \cite{capimentrevista2026}, a visita à sede e dados secundários.
+
+\section{Hierarquia e Ritos de Coordenação}
+
+A Capim, com cerca de 150 colaboradores em 2026, organiza-se em squads multidisciplinares por produto, com coordenação central exercida pela Diretoria de Produto. Cada squad é autônomo na operação, mas alinhado estrategicamente por meio de dois ritos formais, sintetizados na Figura~\ref{fig:organograma} e na Tabela~\ref{tab:ritos}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      node distance=10mm and 6mm,
+      box/.style={draw, rounded corners, align=center, minimum width=32mm, minimum height=9mm, font=\small},
+      every edge/.style={draw, -{Stealth[length=2mm]}}
+    ]
+    \node[box, fill=gray!15] (ceo) {CEO};
+    \node[box, below=of ceo] (dp) {Diretoria de Produto};
+    \node[box, right=18mm of dp] (tech) {Liderança de Tecnologia};
+
+    \node[box, below=14mm of dp, xshift=-57mm] (saas) {Squad\\SaaS};
+    \node[box, below=14mm of dp, xshift=-19mm] (bnpl) {Squad\\BNPL/POS};
+    \node[box, below=14mm of dp, xshift=19mm] (sust) {Squad\\Sustentação};
+    \node[box, below=14mm of dp, xshift=57mm] (exp) {Squad\\Experimentos};
+
+    \draw (ceo) edge (dp);
+    \draw (ceo) edge (tech);
+    \draw (dp) edge (saas);
+    \draw (dp) edge (bnpl);
+    \draw (dp) edge (sust);
+    \draw (dp) edge (exp);
+
+    \node[draw, dashed, rounded corners, fit=(ceo)(dp)(tech), inner sep=4mm, label={[font=\scriptsize]above right:Comitê Estratégico (semanal)}] {};
+  \end{tikzpicture}
+  \caption{Organograma resumido da Capim Software}
+  \label{fig:organograma}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Ritos de coordenação da inovação na Capim}
+  \label{tab:ritos}
+  \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Rito} & \textbf{Frequência / Participantes} & \textbf{Objetivo} \\
+    \midrule
+    Reunião de Produto & Quinzenal -- Diretor de Produto, PMs, design & Alinhar prioridades e evitar sobreposição entre squads \\
+    Reunião Estratégica & Semanal -- CEO, Diretor de Produto, PM de Experimentos, Líder de Tecnologia & Definir rumos e tratar problemas críticos \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+\section{Estrela de Galbraith}
+\label{sec:galbraith}
+
+O modelo de Galbraith avalia o alinhamento entre cinco dimensões organizacionais. A Tabela~\ref{tab:galbraith} sintetiza a análise para a Capim.
+
+\begin{table}[H]
+  \centering
+  \caption{Estrela de Galbraith aplicada à Capim}
+  \label{tab:galbraith}
+  \begin{tabularx}{\textwidth}{lX}
+    \toprule
+    \textbf{Dimensão} & \textbf{Análise para a Capim} \\
+    \midrule
+    Estratégia & Aprofundar penetração em odontologia via ecossistema integrado (crédito + gestão + maquininha + carnê). Foco em ``agenda cheia e rentável'' para clínicas. Crescimento por dois caminhos: melhorias incrementais nos produtos existentes e \textit{home runs} experimentais (como o modelo B2C). \\
+    Estrutura & Squads autônomos por produto, com coordenação central da Diretoria de Produto. Organização enxuta (\textasciitilde150 pessoas) e horizontal nas decisões operacionais. \\
+    Processos & Combinação adaptada de Scrum (\textit{sprints}, \textit{boards}) com \textit{stage-gates} internos: Garagem~2 $\rightarrow$ Garagem~1 $\rightarrow$ Rua. Progressão controlada pelo número de clínicas expostas (5--10 $\rightarrow$ 50--100 $\rightarrow$ 500+). Métrica de sucesso por iniciativa, revisável durante o projeto. \\
+    Recompensas & Tema não aprofundado na entrevista. Indícios apontam para reconhecimento por autonomia, \textit{ownership} e exposição direta a problemas estratégicos junto ao CEO. \\
+    Pessoas & Time fundador com formação executiva (MBA internacional). Cultura de iteração rápida, uso intensivo de IA (Claude, Cursor) e proximidade com o usuário final. \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+As cinco dimensões mostram-se majoritariamente alinhadas: estratégia experimental sustentada por estrutura enxuta, processos adaptáveis e pessoas culturalmente engajadas. A dimensão de processos, contudo, é examinada com maior profundidade no Capítulo~\ref{cap:processo-decisorio}, onde se mostra que o mesmo arranjo de \textit{stage-gates} adaptado é aplicado de forma relativamente uniforme a projetos de incerteza muito distinta.
+
+\section{Configuração de Mintzberg}
+\label{sec:mintzberg}
+
+A análise indica que a Capim se enquadra majoritariamente como adhocracia operacional, configuração típica de organizações cuja atividade central é a inovação (Tabela~\ref{tab:mintzberg}).
+
+\begin{table}[H]
+  \centering
+  \caption{Configuração de Mintzberg aplicada à Capim}
+  \label{tab:mintzberg}
+  \begin{tabularx}{\textwidth}{lX}
+    \toprule
+    \textbf{Elemento} & \textbf{Manifestação na Capim} \\
+    \midrule
+    Mecanismo de coordenação & Ajuste mútuo (reuniões quinzenais e semanais), em detrimento da padronização rígida \\
+    Parte-chave da organização & Núcleo operacional + assessoria de apoio (times de produto, design, engenharia e funções de suporte) \\
+    Parâmetros de design & Estrutura orgânica, especialização horizontal, dispositivos de ligação, descentralização seletiva \\
+    Fatores contextuais & Ambiente dinâmico, tecnologia sofisticada (software + IA), organização jovem de porte médio \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+Uma ressalva é necessária: o squad de sustentação apresenta traços mais burocráticos, com fluxos de trabalho mais previsíveis. Ainda assim, mesmo essa equipe se engaja em inovações incrementais -- como a migração automática de sistemas legados --, o que mantém a adhocracia como configuração dominante na empresa como um todo.
+
+\section{Análise SWOT}
+\label{sec:swot}
+
+\begin{table}[H]
+  \centering
+  \caption{Análise SWOT da Capim}
+  \label{tab:swot}
+  \begin{tabularx}{\textwidth}{XX}
+    \toprule
+    \textbf{Forças} & \textbf{Fraquezas} \\
+    \midrule
+    Pioneirismo em crédito odontológico no ponto de venda &
+    Sistema de gestão tratado internamente como produto ``renegado'' \\
+    Ecossistema integrado (crédito, gestão, maquininha, carnê) &
+    Dependência do dentista como canal de venda do crédito \\
+    Base instalada: 6.000+ clínicas, R\$~450M+ em crédito originado, 70 mil+ pacientes &
+    Maquininha diferenciada principalmente por taxa \\
+    Cultura de \textit{ownership} e capacidade de iteração rápida &
+    Portfólio concentrado em uma única vertical (odontologia) \\
+    Uso intensivo de IA no produto e na operação interna &
+    Iniciativas congeladas aguardando maturação tecnológica (caso CamilA) \\
+    Time fundador qualificado e ainda atuante na empresa &
+    Ausência de função formal de descoberta/geração de ideias (ver Capítulo~\ref{cap:processo-decisorio}) \\
+    \bottomrule
+  \end{tabularx}
+
+  \vspace{2mm}
+  \begin{tabularx}{\textwidth}{XX}
+    \toprule
+    \textbf{Oportunidades} & \textbf{Ameaças} \\
+    \midrule
+    Aumentar receita das clínicas via aquisição de pacientes (``agenda cheia e rentável'') &
+    Endividamento da população limita a base elegível ao crédito \\
+    \textit{Cross-sell} na base instalada de 6.000+ clínicas &
+    Risco regulatório em crédito e meios de pagamento \\
+    Avanços em IA generativa destravam iniciativas como a CamilA &
+    Concorrência intensa em sistemas de gestão odontológica \\
+    Expansão para verticais adjacentes (ótica, medicina geral, cirurgias eletivas) &
+    Pressão sobre margens da maquininha \\
+    Modelo B2C (``Uber dos dentistas'') em validação &
+    Dependência de fornecedores externos de IA (Anthropic, OpenAI) \\
+    Aprimoramento de modelos de risco para ampliar a aprovação responsável &
+    Exposição ao macroambiente (``metáfora do elefante'' relatada pelo entrevistado) \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+\end{table}
+
+A Capim conjuga liderança consolidada em sua categoria pioneira (crédito odontológico) com a necessidade de diversificar canais e produtos para mitigar a dependência do dentista como intermediário e a exposição ao cenário macroeconômico. Os capítulos seguintes mostram que parte dessas fraquezas e ameaças -- em particular a ausência de uma função formal de descoberta de oportunidades -- está diretamente relacionada a lacunas no próprio sistema de gestão da inovação da empresa.

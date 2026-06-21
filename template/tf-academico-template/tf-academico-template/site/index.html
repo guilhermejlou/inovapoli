@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>[PREENCHER: Título] | [PREENCHER: Seu Nome]</title>
+  <script>
+    (async function checkAuth() {
+      try {
+        const res = await fetch('/api/verify-session');
+        if (!res.ok) { window.location.href = '/api/login'; return; }
+        const { name, email, pic } = await res.json();
+        const av = document.getElementById('user-avatar');
+        if (av && pic) av.style.backgroundImage = `url(${pic})`;
+        const un = document.getElementById('user-name');
+        if (un) un.textContent = name?.split(' ')[0] || email;
+      } catch(e) { window.location.href = '/api/login'; }
+    })();
+    async function logout() {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.href = '/api/login';
+    }
+  </script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--bg:#0f1117;--surface:#1a1d2e;--border:#2d3148;--text:#e2e8f0;--muted:#64748b;--accent:#3b82f6;--green:#4ade80;--gbg:#0f2d1f;--gborder:#166534;--amber:#f59e0b;}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+    header{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;}
+    .h-left{display:flex;flex-direction:column;gap:2px;}
+    .h-title{font-size:13px;font-weight:600;color:#f1f5f9;}
+    .h-sub{font-size:11px;color:var(--muted);}
+    .h-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+    .badge{display:flex;align-items:center;gap:5px;background:var(--gbg);border:1px solid var(--gborder);color:var(--green);font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap;}
+    .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+    .btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;text-decoration:none;border:none;transition:.15s;white-space:nowrap;font-family:inherit;}
+    .btn-blue{background:var(--accent);color:#fff;}.btn-blue:hover{background:#2563eb;}
+    .btn-amber{background:var(--amber);color:#000;}.btn-amber:hover{background:#d97706;}
+    .btn-ghost{background:transparent;color:#94a3b8;border:1px solid var(--border);}.btn-ghost:hover{background:#1e2235;color:var(--text);}
+    .toolbar{background:#151824;border-bottom:1px solid var(--border);padding:6px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;font-size:11px;color:var(--muted);}
+    .toolbar-left{display:flex;align-items:center;gap:14px;}
+    .toolbar strong{color:#94a3b8;}
+    .main{flex:1;display:flex;overflow:hidden;}
+    .pdf-wrap{flex:1;position:relative;background:#404040;}
+    .pdf-wrap iframe{width:100%;height:100%;border:none;display:block;}
+    .sidebar{width:320px;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden;transition:width .25s;}
+    .sidebar.collapsed{width:0;border:none;}
+    .sb-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+    .sb-title{font-size:13px;font-weight:600;}
+    .sb-meta{display:flex;align-items:center;gap:8px;}
+    .sb-count{font-size:11px;color:var(--muted);}
+    .sb-toggle{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:2px 4px;border-radius:4px;}
+    .sb-toggle:hover{color:var(--text);background:var(--border);}
+    #reopen-btn{position:fixed;top:50%;right:0;transform:translateY(-50%);background:var(--surface);border:1px solid var(--border);border-right:none;border-radius:8px 0 0 8px;padding:14px 7px;cursor:pointer;z-index:300;color:#94a3b8;font-family:inherit;font-size:10px;font-weight:600;letter-spacing:.08em;writing-mode:vertical-rl;text-orientation:mixed;display:none;align-items:center;gap:6px;transition:.15s;}
+    #reopen-btn:hover{background:var(--border);color:var(--text);}
+    #reopen-btn.visible{display:flex;}
+    .sb-body{flex:1;overflow-y:auto;padding:10px;}
+    #fab{position:fixed;bottom:28px;right:336px;background:var(--amber);color:#000;border:none;border-radius:50px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 16px rgba(245,158,11,.4);display:flex;align-items:center;gap:7px;transition:all .2s;z-index:200;font-family:inherit;}
+    #fab:hover{background:#d97706;transform:translateY(-2px);}
+    #fab.sidebar-hidden{right:20px;}
+    .c-card{background:#151824;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:.15s;}
+    .c-card:hover{border-color:var(--amber);transform:translateY(-1px);}
+    .c-page{font-size:10px;color:var(--accent);font-weight:700;margin-bottom:5px;}
+    .c-quote{font-size:11px;color:var(--muted);font-style:italic;border-left:2px solid var(--amber);padding-left:8px;margin-bottom:7px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+    .c-text{font-size:12px;color:var(--text);line-height:1.6;}
+    .c-meta{font-size:10px;color:var(--muted);margin-top:7px;display:flex;align-items:center;justify-content:space-between;}
+    .c-link{font-size:10px;color:var(--accent);text-decoration:none;}
+    .c-link:hover{text-decoration:underline;}
+    .no-c{text-align:center;color:var(--muted);font-size:12px;padding:32px 16px;line-height:2;}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:4000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+    .overlay.open{display:flex;}
+    .modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;width:460px;max-width:94vw;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+    .m-title{font-size:16px;font-weight:700;margin-bottom:4px;}
+    .m-sub{font-size:12px;color:var(--muted);margin-bottom:20px;}
+    .field{margin-bottom:12px;}
+    .field-row{display:flex;gap:10px;margin-bottom:12px;}
+    .field-row .field{flex:1;margin-bottom:0;}
+    .field label{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:5px;letter-spacing:.05em;text-transform:uppercase;}
+    .field input,.field textarea{width:100%;background:#0f1117;border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;font-family:inherit;outline:none;transition:.15s;}
+    .field input:focus,.field textarea:focus{border-color:var(--accent);}
+    .field textarea{resize:vertical;min-height:100px;}
+    .field input[type=number]{-moz-appearance:textfield;}
+    .m-hint{font-size:11px;color:var(--muted);margin-bottom:16px;line-height:1.6;background:#151824;padding:8px 12px;border-radius:6px;border-left:3px solid var(--border);}
+    .m-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:4px;}
+    .btn-cancel{background:transparent;color:var(--muted);border:1px solid var(--border);}
+    .btn-submit{background:var(--amber);color:#000;font-weight:600;}
+    .btn-submit:disabled{opacity:.5;cursor:not-allowed;}
+    #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;font-size:13px;z-index:6000;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+    .sb-loading{display:flex;align-items:center;gap:8px;padding:20px;color:var(--muted);font-size:12px;}
+    .mini-spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="h-left">
+    <!-- ⚠ PREENCHER: título e metadados do trabalho -->
+    <div class="h-title">[PREENCHER: Título do Trabalho] — [PREENCHER: Tipo de Trabalho]</div>
+    <div class="h-sub">[PREENCHER: Nome do Autor] · [PREENCHER: Universidade] · [PREENCHER: Curso] · [PREENCHER: Prof. Orientador]</div>
+  </div>
+  <div class="h-right">
+    <div class="badge"><div class="dot"></div>Atualizado automaticamente</div>
+    <a href="main.pdf" download="trabalho.pdf" class="btn btn-blue">⬇ Baixar PDF</a>
+    <!-- ⚠ PREENCHER: URL do seu repositório GitHub -->
+    <a href="https://github.com/SEU_USUARIO/SEU_REPOSITORIO/issues?q=label%3Aprofessor-comment" target="_blank" class="btn btn-ghost">💬 Comentários</a>
+    <a href="https://github.com/SEU_USUARIO/SEU_REPOSITORIO" target="_blank" class="btn btn-ghost">⌥ GitHub</a>
+    <a href="/api/issues" target="_blank" class="btn btn-ghost" style="font-size:10px;opacity:.45;">⚙ API</a>
+    <div style="display:flex;align-items:center;gap:8px;margin-left:4px;padding-left:12px;border-left:1px solid var(--border);">
+      <div id="user-avatar" style="width:28px;height:28px;border-radius:50%;background:var(--border) center/cover no-repeat;flex-shrink:0;"></div>
+      <span id="user-name" style="font-size:12px;color:#94a3b8;white-space:nowrap;"></span>
+      <button onclick="logout()" class="btn btn-ghost" style="font-size:11px;padding:4px 8px;">Sair</button>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <div>📄 <strong>main.pdf</strong></div>
+    <!-- ⚠ PREENCHER: normas aplicáveis -->
+    <div>LaTeX + <strong>abntex2</strong> · Normas <strong>ABNT NBR 14724</strong></div>
+  </div>
+  <div id="last-build" style="font-size:11px;color:var(--muted);">⏳ Verificando última compilação...</div>
+</div>
+
+<div class="main">
+  <div class="pdf-wrap">
+    <iframe id="pdf-frame" src="main.pdf#toolbar=1&navpanes=1&view=FitH" title="Trabalho Acadêmico" allowfullscreen></iframe>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <div class="sb-header">
+      <span class="sb-title">💬 Comentários do Orientador</span>
+      <div class="sb-meta">
+        <span class="sb-count" id="sb-count">—</span>
+        <button class="sb-toggle" onclick="toggleSidebar()" title="Recolher">✕</button>
+      </div>
+    </div>
+    <div class="sb-body" id="sb-body">
+      <div class="sb-loading"><div class="mini-spinner"></div>Carregando...</div>
+    </div>
+  </div>
+</div>
+
+<button id="reopen-btn" onclick="toggleSidebar()">💬 Comentários</button>
+<button id="fab" onclick="openModal()">✏️ Adicionar comentário</button>
+
+<div class="overlay" id="modal">
+  <div class="modal">
+    <div class="m-title">✏️ Novo Comentário</div>
+    <div class="m-sub">O comentário ficará vinculado à página e salvo como Issue no GitHub.</div>
+    <div class="m-hint">📌 Anote a página que está visualizando e preencha abaixo.</div>
+    <div class="field-row">
+      <div class="field" style="max-width:100px;">
+        <label>Página</label>
+        <input type="number" id="in-page" min="1" value="1"/>
+      </div>
+      <div class="field">
+        <label>Seu nome</label>
+        <input type="text" id="in-author" placeholder="Prof. Nome Sobrenome"/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Trecho referenciado <span style="font-weight:400;text-transform:none;">(opcional)</span></label>
+      <input type="text" id="in-quote" placeholder="Cole aqui o trecho comentado..."/>
+    </div>
+    <div class="field">
+      <label>Comentário</label>
+      <textarea id="in-comment" placeholder="Escreva seu comentário... (Ctrl+Enter para enviar)"></textarea>
+    </div>
+    <div class="m-actions">
+      <button class="btn btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-submit" id="btn-sub" onclick="submitComment()">Enviar</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+// ⚠ PREENCHER: usuário/repositório do GitHub
+const REPO    = 'SEU_USUARIO/SEU_REPOSITORIO';
+const API_URL = '/api/comment';
+let sidebarOpen = true;
+
+fetch('last_build.txt?t='+Date.now()).then(r=>r.ok?r.text():'')
+  .then(t=>{if(t)document.getElementById('last-build').textContent='🕐 '+t.split('\n')[0];}).catch(()=>{});
+
+function toggleSidebar(){
+  sidebarOpen=!sidebarOpen;
+  document.getElementById('sidebar').classList.toggle('collapsed',!sidebarOpen);
+  document.getElementById('fab').classList.toggle('sidebar-hidden',!sidebarOpen);
+  document.getElementById('reopen-btn').classList.toggle('visible',!sidebarOpen);
+}
+
+function openModal(){document.getElementById('in-comment').value='';document.getElementById('modal').classList.add('open');setTimeout(()=>document.getElementById('in-page').focus(),50);}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeModal();});
+document.getElementById('in-comment').addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='Enter')submitComment();});
+
+async function submitComment(){
+  const page=parseInt(document.getElementById('in-page').value)||1;
+  const author=document.getElementById('in-author').value.trim()||'Anônimo';
+  const selectedText=document.getElementById('in-quote').value.trim();
+  const comment=document.getElementById('in-comment').value.trim();
+  if(!comment){toast('⚠️ Escreva um comentário.');return;}
+  const btn=document.getElementById('btn-sub');
+  btn.disabled=true;btn.textContent='Enviando...';
+  try{
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page,selectedText,comment,author})});
+    const data=await res.json();
+    if(data.success){closeModal();toast('✅ Comentário enviado! Issue #'+data.issueNumber);setTimeout(loadComments,1200);}
+    else toast('❌ '+(data.error||'Tente novamente.'));
+  }catch(e){toast('❌ Erro de conexão.');}
+  finally{btn.disabled=false;btn.textContent='Enviar';}
+}
+
+async function loadComments(){
+  try{
+    const res=await fetch(`https://api.github.com/repos/${REPO}/issues?labels=professor-comment&state=open&per_page=50`,{headers:{'Accept':'application/vnd.github+json'}});
+    const issues=await res.json();
+    const body=document.getElementById('sb-body');
+    const count=document.getElementById('sb-count');
+    count.textContent=issues.length+' comentário(s)';
+    if(!issues.length){body.innerHTML='<div class="no-c">Nenhum comentário ainda.<br>Clique em ✏️ para adicionar.</div>';return;}
+    body.innerHTML=issues.map(iss=>{
+      const page=iss.title.match(/\[Página (\d+)\]/)?.[1]||'?';
+      const quote=iss.body?.match(/> (.+)/)?.[1]?.trim()||'';
+      const comment=iss.body?.match(/### 💬 Comentário\n([\s\S]+?)(?:\n---|$)/)?.[1]?.trim()||'';
+      const author=iss.body?.match(/\*\*Autor:\*\* (.+)/)?.[1]?.trim()||'Anônimo';
+      const date=new Date(iss.created_at).toLocaleDateString('pt-BR');
+      return `<div class="c-card"><div class="c-page">📄 PÁGINA ${page}</div>${quote?`<div class="c-quote">"${quote}"</div>`:''}<div class="c-text">${comment}</div><div class="c-meta"><span>— ${author} · ${date}</span><a href="${iss.html_url}" target="_blank" class="c-link">#${iss.number} →</a></div></div>`;
+    }).join('');
+  }catch(e){document.getElementById('sb-body').innerHTML='<div class="no-c">Erro ao carregar.</div>';}
+}
+
+function toast(msg,dur=4000){const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',dur);}
+loadComments();
+setInterval(loadComments,30000);
+</script>
+</body>
+</html>

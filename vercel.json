@@ -1,11 +1,19 @@
 {
-  "name": "inova-poli",
   "version": 2,
-  "builds": [
-    { "src": "**/*", "use": "@vercel/static" }
+  "name": "inova-poli",
+  "outputDirectory": "site",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/apresentacao", "destination": "/apresentacao/index.html" }
   ],
-  "routes": [
-    { "src": "/logomarca.png", "dest": "/logomarca.png" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "headers": [
+    {
+      "source": "/main.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
   ]
 }

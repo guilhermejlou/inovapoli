@@ -1,0 +1,83 @@
+% ==============================================================
+% CAPÍTULO 7 — DIAGNÓSTICO E PROPOSTA DE MELHORIA
+% ==============================================================
+
+\chapter{Diagnóstico e Proposta de Melhoria}
+\label{cap:diagnostico-proposta}
+
+\section{Pontos Negativos do Processo Atual}
+\label{sec:pontos-negativos}
+
+A aplicação dos frameworks do Capítulo~\ref{cap:processo-decisorio} ao processo decisório da Capim permite consolidar cinco pontos negativos, organizados por ordem de relevância para a continuidade da capacidade de inovação da empresa.
+
+\begin{enumerate}
+  \item \textbf{Ausência de uma função formal de Descoberta.} Como mostrado na Seção~\ref{sec:ambidestria}, a Capim não possui hub, rito ou responsável dedicado à busca ativa de oportunidades. Os projetos analisados (Capix, CamilA, modelo B2C) parecem nascer de percepções pontuais da liderança, não de um processo sistemático de geração e captação de ideias -- interno (entre squads) ou externo (clínicas, dentistas, parceiros de tecnologia). Pela leitura da cadeia de valor da inovação (Seção~\ref{sec:cadeia-valor}), este é o elo mais fraco do sistema.
+  \item \textbf{Critérios de decisão uniformes para projetos de incerteza distinta.} A métrica trimestral fixa é aplicada da mesma forma a um produto incremental maduro (sistema de gestão) e a uma aposta radical em estágio de incubação (CamilA). A tipologia de \textcite{salerno2015} mostra que esses projetos pertencem a categorias de processo diferentes e deveriam ser avaliados com critérios distintos.
+  \item \textbf{Dependência de pessoas-chave e informalidade no \textit{resourcing}.} A coordenação entre squads autônomos e iniciativas radicais parece depender fortemente da disponibilidade e do julgamento do PM de experimentos e da Diretoria de Produto, sem mecanismos formais de orçamento, agenda ou RH dedicados à inovação radical -- na linha do que \textcite{salerno2025} identificam como condição necessária para que o \textit{mainstream} sustente o \textit{newstream} de forma previsível.
+  \item \textbf{Ausência de registro estruturado de aprendizado em projetos descontinuados.} Iniciativas que ``deram errado'' parecem ser documentadas apenas informalmente, sem alimentar de volta o funil de novas ideias -- o que desperdiça aprendizado que poderia reduzir a incerteza de futuras iniciativas semelhantes.
+  \item \textbf{Portfólio sem visão consolidada de risco e retorno.} As decisões de continuidade são tomadas projeto a projeto, sem uma visão de carteira que avalie explicitamente o balanceamento entre iniciativas de baixo e alto risco (Seção~\ref{sec:portfolio}). Isso dificulta perceber, por exemplo, a ausência de iniciativas no quadrante de \textit{Pearls}.
+\end{enumerate}
+
+\section{Sistema Proposto}
+\label{sec:sistema-proposto}
+
+A proposta de aprimoramento preserva os elementos do processo atual que se mostraram coerentes com a literatura -- a separação física e organizacional da Garagem~2, a progressão controlada por exposição a clínicas, e a disciplina de métricas por iniciativa -- e introduz quatro mecanismos adicionais, voltados a corrigir os pontos negativos identificados.
+
+\subsection{Hub de Descoberta de Oportunidades}
+
+Recomenda-se a criação de uma função de Descoberta, antecedendo formalmente a Garagem~2, nos termos discutidos por \textcite{salernogomes2018} e \textcite{oconnormeyer2026}. Concretamente, isso significa:
+
+\begin{itemize}
+  \item Designar, dentro da Diretoria de Produto, um papel explícito de ``caçador de oportunidades'', com tempo protegido para escuta ativa de clínicas, dentistas e parceiros de tecnologia (IA, fintechs, distribuidores de equipamentos odontológicos), em vez de depender apenas de percepções emergentes do PM de experimentos.
+  \item Instituir um rito leve e periódico (por exemplo, mensal) de polinização cruzada entre squads, no qual cada equipe apresenta sinais de oportunidade observados em sua frente -- mecanismo direto de geração de ideias internas, na acepção de \textcite{hansenbirkinshaw2007}.
+  \item Tratar cada oportunidade identificada como um item de um portfólio de descoberta, e não como uma proposta isolada a ser aprovada ou rejeitada em uma única reunião -- alinhado à recomendação de \textcite{oconnormeyer2026} de tratar domínios de inovação estratégica como portfólios de experimentos, e não como pipeline de \textit{go/kill}.
+\end{itemize}
+
+\subsection{Learning Plan para Iniciativas em Incubação}
+
+Para projetos que ingressam na Garagem~2 com alta incerteza de mercado e/ou tecnologia -- como foi o caso da CamilA --, recomenda-se a adoção de um \textit{learning plan} formal antes da entrada nos ciclos trimestrais de avaliação tradicionais, conforme proposto por \textcite{riceoconnorpierantozzi2008} e detalhado, com casos aplicados, por \textcite{salernogomes2018}.
+
+O \textit{learning plan} consiste em um ciclo iterativo que parte da identificação explícita do que é conhecido e do que é desconhecido em quatro categorias de incerteza -- técnica, mercadológica, organizacional e de recursos --, avalia a criticidade relativa de cada incerteza, formula hipóteses testáveis de menor custo possível e realimenta o ciclo com o aprendizado obtido, antes de qualquer compromisso financeiro maior. Esse mecanismo ocupa, no espectro de abordagens de gestão de incerteza, uma posição mais adequada a incertezas elevadas do que os \textit{stage-gates} tradicionais ou os \textit{milestones} simples -- e é particularmente recomendável nos casos em que, como na CamilA, a causa do não atingimento da métrica trimestral é a imaturidade tecnológica, e não a falta de mérito da ideia.
+
+Na prática, recomenda-se que a transição da Garagem~2 para a Garagem~1 deixe de ser condicionada apenas ao atingimento de uma métrica de adoção fixa e passe a exigir, adicionalmente, a conclusão satisfatória de um ciclo de \textit{learning plan} -- reduzindo o risco de descontinuar prematuramente iniciativas tecnologicamente promissoras, mas ainda imaturas.
+
+\subsection{Diferenciação Formal de Processos por Tipo de Incerteza}
+
+Recomenda-se que a Diretoria de Produto classifique explicitamente cada iniciativa, no momento de sua entrada na Garagem~2, segundo a tipologia de \textcite{salerno2015} (Tabela~\ref{tab:tipologia}), e associe a cada tipo um critério de avaliação coerente:
+
+\begin{itemize}
+  \item Iniciativas do tipo \textit{tradicional} (mercado e tecnologia maduros, como melhorias do sistema de gestão e do Capix) continuam no regime atual de métrica trimestral e \textit{stage-gates}.
+  \item Iniciativas classificadas como \textit{pausa esperando tecnologia} ou \textit{pausa esperando mercado} (como a CamilA e o modelo B2C, respectivamente) passam a ter ciclos de avaliação vinculados a marcos de maturidade tecnológica ou de validação de mercado, e não apenas ao calendário trimestral -- evitando que o relógio do trimestre force decisões binárias sobre fenômenos que evoluem em ritmo diferente.
+\end{itemize}
+
+\subsection{Mecanismos Formais de \textit{Resourcing}}
+
+Inspirando-se no caso de ambidestria estrutural documentado por \textcite{salerno2025}, recomenda-se formalizar os mecanismos pelos quais squads autônomos (\textit{mainstream}) cedem tempo, orçamento e pessoas para iniciativas em incubação (\textit{newstream}): acordos explícitos de alocação de horas de engenharia por trimestre, um orçamento anual dedicado a experimentos da Garagem~2 independente do orçamento operacional dos squads, e critérios de carreira e reconhecimento específicos para quem lidera iniciativas de alta incerteza -- de modo que o sucesso nessas funções não seja avaliado pelas mesmas métricas de entrega usadas para produtos maduros.
+
+\subsection{Portfólio de Inovação com Revisão Periódica}
+
+Por fim, recomenda-se que o comitê estratégico semanal passe a revisar, periodicamente (por exemplo, a cada trimestre), uma visão consolidada da carteira de iniciativas na matriz de risco e retorno de \textcite{goffinmitchell2010} (Tabela~\ref{tab:portfolio}), de modo a tornar explícito o balanceamento entre projetos \textit{Bread and Butter} e \textit{Oysters}, e a identificar deliberadamente a necessidade de desenvolver iniciativas no quadrante de \textit{Pearls} -- oportunidades de baixo risco e alto retorno, tipicamente amadurecidas pelo próprio hub de Descoberta proposto na Seção anterior.
+
+\section{Síntese da Proposta}
+
+A Tabela~\ref{tab:sintese-proposta} resume a transição proposta do sistema atual para o sistema aprimorado.
+
+\begin{table}[H]
+  \centering
+  \caption{Síntese: sistema atual \textit{versus} sistema proposto}
+  \label{tab:sintese-proposta}
+  \begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    \textbf{Dimensão} & \textbf{Sistema atual} & \textbf{Sistema proposto} \\
+    \midrule
+    Geração de ideias & Informal, dependente de percepções pontuais da liderança & Hub de Descoberta com escuta ativa e polinização cruzada entre squads \\
+    Critério de avaliação & Métrica trimestral única, igual para todos os tipos de projeto & Critério diferenciado por tipo de processo (tradicional \textit{vs.} pausa ativa) \\
+    Gestão de incerteza radical & Ciclo trimestral aplicado diretamente & \textit{Learning plan} formal antes da entrada nos gates tradicionais \\
+    Alocação de recursos & Informal, dependente de disponibilidade pontual & Acordos formais de orçamento, tempo de engenharia e RH dedicado \\
+    Visão de portfólio & Decisões projeto a projeto & Revisão periódica da carteira na matriz de risco e retorno \\
+    \bottomrule
+  \end{tabularx}
+  \legend{Fonte: elaborado pelos autores.}
+\end{table}
+
+A proposta não substitui o modelo atual da Capim, que já demonstra elementos sofisticados de ambidestria estrutural e de progressão controlada de risco. O objetivo é fechar especificamente a lacuna identificada na geração de ideias e tornar explícita -- em vez de implícita -- a diferenciação de governança entre inovação incremental e radical que a literatura da disciplina indica como condição para sustentar a capacidade de inovação da empresa no longo prazo.

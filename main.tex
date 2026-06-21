@@ -1,0 +1,90 @@
+% ==============================================================
+% CAPIM SOFTWARE — ANÁLISE DO SISTEMA DE GESTÃO DA INOVAÇÃO
+% PRO3584 - Projeto, Processo e Gestão da Inovação
+% Escola Politécnica da Universidade de São Paulo
+% Departamento de Engenharia de Produção
+% Professor: Mario Sergio Salerno
+% Grupo 6
+% ==============================================================
+
+\documentclass[
+    12pt, openright, twoside, a4paper,
+    chapter=TITLE, section=TITLE,
+    english, brazil
+]{abntex2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit}
+\usepackage[style=abnt, backend=biber]{biblatex}
+
+\geometry{top=3cm, bottom=2cm, left=3cm, right=2cm}
+
+\addbibresource{referencias/referencias.bib}
+
+\hypersetup{
+    colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue,
+    pdftitle={Capim Software: Análise e Proposta de Aprimoramento do Sistema de Gestão da Inovação},
+    pdfauthor={Augusto Ribeiro Monteiro, Gabriel Axel Vales Silva, Guilherme de Jesus Lourenço, Pedro Prataviera Francisco Favero, Thalles Moura Lettieri},
+}
+
+% ── Dados do documento ──────────────────────────────────────
+\titulo{Capim Software: Análise e Proposta de Aprimoramento do Sistema de Gestão da Inovação}
+\autor{Augusto Ribeiro Monteiro \and Gabriel Axel Vales Silva \and Guilherme de Jesus Lourenço \and Pedro Prataviera Francisco Favero \and Thalles Moura Lettieri}
+\local{São Paulo}
+\data{2026}
+\orientador{Prof. Dr. Mario Sergio Salerno}
+\instituicao{Escola Politécnica da Universidade de São Paulo \\ Departamento de Engenharia de Produção}
+\tipotrabalho{Relatório técnico-acadêmico}
+\preambulo{Relatório apresentado à disciplina PRO3584 -- Projeto, Processo e Gestão da Inovação, do Departamento de Engenharia de Produção da Escola Politécnica da Universidade de São Paulo, como avaliação do estudo de caso da empresa Capim Software.}
+
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing
+
+% ── Pré-textuais ────────────────────────────────────────────
+\pretextual
+\include{pretextual/capa}
+\include{pretextual/folha_rosto}
+\include{pretextual/resumo}
+\include{pretextual/abstract}
+\include{pretextual/listas}
+\include{pretextual/sumario}
+
+% ── Textuais ─────────────────────────────────────────────────
+\textual
+\include{capitulos/01_introducao}
+\include{capitulos/02_metodologia}
+\include{capitulos/03_descricao_empresa}
+\include{capitulos/04_meio_ambiente}
+\include{capitulos/05_analise_organizacional}
+\include{capitulos/06_processo_decisorio}
+\include{capitulos/07_diagnostico_proposta}
+\include{capitulos/08_conclusao}
+
+% ── Pós-textuais ─────────────────────────────────────────────
+\postextual
+\printbibliography[heading=bibintoc, title={REFERÊNCIAS}]
+\include{postextual/apendices}
+
+\end{document}
