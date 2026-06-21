@@ -27,7 +27,25 @@ A demanda é majoritariamente privada: 68\% dos brasileiros visitaram um dentist
 
 \subsection{TAM, SAM e SOM da Capim}
 
-O TAM da Capim é o mercado odontológico privado brasileiro como um todo, que movimenta entre R\$~30 e R\$~40 bilhões por ano em consultas, tratamentos e gestão de clínicas. O SAM considera apenas as clínicas privadas independentes com perfil de digitalização compatível com os produtos da Capim, excluindo o universo SUS e grandes redes com sistemas próprios: partindo de um universo estimado de 80 a 100 mil clínicas privadas ativas e de um ticket médio mensal entre R\$~1.500 e R\$~10.000 por clínica, o SAM fica em torno de R\$~10 a 12 bilhões por ano. O SOM considera uma penetração realista de 3\% a 5\% das clínicas privadas independentes no horizonte de cinco anos -- entre 2.500 e 5.000 clínicas ativas, com ticket médio ponderado entre R\$~6.000 e R\$~10.000 mensais --, resultando em um SOM entre R\$~180 e R\$~500 milhões anuais em ARR, meta plausível dado o crescimento atual da base e o aumento de ticket proporcionado pelo produto POS.
+A Figura~\ref{fig:tam-sam-som} ilustra a redução sucessiva do mercado endereçável; as premissas de cada nível estão detalhadas a seguir.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[font=\small,
+      tier/.style={draw, fill=gray!12, align=center, trapezium,
+                   trapezium left angle=70, trapezium right angle=110,
+                   trapezium stretches=true, minimum height=14mm, inner sep=2pt},
+      node distance=0mm]
+    \node[tier, minimum width=70mm] (tam) {\textbf{TAM} -- R\$~30--40 bi/ano};
+    \node[tier, minimum width=46mm, below=2mm of tam, fill=gray!20] (sam) {\textbf{SAM} -- R\$~10--12 bi/ano};
+    \node[tier, minimum width=24mm, below=2mm of sam, fill=blue!12] (som) {\textbf{SOM} -- R\$~180--500 mi/ano};
+  \end{tikzpicture}
+  \caption{Funil TAM, SAM e SOM da Capim}
+  \label{fig:tam-sam-som}
+  \legend{Fonte: estimativas dos autores a partir de dados secundários -- a confirmar.}
+\end{figure}
+
+O TAM é o mercado odontológico privado brasileiro como um todo. O SAM considera apenas as clínicas privadas independentes com perfil de digitalização compatível com os produtos da Capim (excluindo SUS e grandes redes com sistemas próprios), partindo de um universo estimado de 80 a 100 mil clínicas ativas com ticket médio mensal entre R\$~1.500 e R\$~10.000. O SOM considera uma penetração de 3\% a 5\% dessas clínicas em cinco anos -- entre 2.500 e 5.000 clínicas ativas, ticket médio ponderado entre R\$~6.000 e R\$~10.000 mensais --, meta plausível dado o crescimento atual da base e o aumento de ticket proporcionado pelo produto POS.
 
 A Capim opera em um setor estruturalmente atraente pelo tamanho do mercado odontológico privado, pelo momentum do ecossistema brasileiro de healthtechs e pela convergência com o mercado de fintechs. Esse posicionamento no cruzamento dos dois ecossistemas amplia o SAM endereçável em relação a concorrentes que atuam em apenas um vetor -- software, parcelamento ou maquininha isoladamente.
 
@@ -69,7 +87,7 @@ Nenhum concorrente combina os três produtos com a profundidade da Capim. O Clin
 
 \section{Posicionamento da Capim}
 
-A Capim se posiciona como a única plataforma do mercado brasileiro que oferece, de forma nativa e integrada, gestão de clínica, parcelamento ao paciente e adquirência. Fundada em 2021 por Marcelo Lutz e Roberto Biselli, a empresa se define como um ERP especializado em odontologia, com camada financeira embarcada. Em fevereiro de 2025, captou uma Série A de R\$~132 milhões liderada por Valor Capital e QED Investors, com participação de ONE.VC, Canary, NXTP, Endeavor, Saison e Actyus -- este último conduzido por Sérgio Furio, CEO da Creditas. Em 2024, a receita triplicou e a base de clínicas passou a casa dos 6 mil, com o objetivo declarado de alcançar 10 mil clínicas ativas.
+A Capim se posiciona como a única plataforma do mercado brasileiro que oferece, de forma nativa e integrada, gestão de clínica, parcelamento ao paciente e adquirência. Fundada em 2021 por Marcelo Lutz e Roberto Biselli, a empresa se define como um ERP especializado em odontologia, com camada financeira embarcada. Em fevereiro de 2025, captou uma Série A de R\$~132 milhões liderada por Valor Capital e QED Investors, com participação de ONE.VC, Canary, NXTP, Endeavor, Saison e Actyus -- este último conduzido por Sérgio Furio, CEO da Creditas. Em 2024, a receita triplicou e a base de clínicas passou a casa dos 6 mil, com o objetivo declarado de alcançar 10 mil clínicas ativas. \footnote{Dados de fundação, captação e investidores são informações institucionais/de mercado, não relatadas pelo entrevistado -- a equipe deve confirmar a exatidão e a fonte antes da entrega final.}
 
 \subsection{Principal diferencial}
 

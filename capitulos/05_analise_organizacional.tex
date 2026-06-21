@@ -5,7 +5,7 @@
 \chapter{Análise Organizacional}
 \label{cap:analise-organizacional}
 
-Esta seção analisa a estrutura organizacional da Capim Software a partir de três perspectivas complementares: hierarquia interna, Estrela de Galbraith, configuração de Mintzberg e análise SWOT. As informações têm como base a entrevista com Lucas Mathias, PM de experimentos e integrante do time fundador \cite{capimentrevista2026}, a visita à sede e dados secundários.
+Esta seção analisa a estrutura organizacional da Capim Software a partir de quatro perspectivas complementares: hierarquia interna, Estrela de Galbraith, configuração de Mintzberg e análise SWOT. As informações têm como base a entrevista com Lucas Mathias, PM de experimentos e integrante do time fundador \cite{capimentrevista2026}, a visita à sede e dados secundários.
 
 \section{Hierarquia e Ritos de Coordenação}
 
@@ -13,6 +13,7 @@ A Capim, com cerca de 150 colaboradores em 2026, organiza-se em squads multidisc
 
 \begin{figure}[H]
   \centering
+  \resizebox{\textwidth}{!}{%
   \begin{tikzpicture}[
       node distance=10mm and 6mm,
       box/.style={draw, rounded corners, align=center, minimum width=32mm, minimum height=9mm, font=\small},
@@ -35,10 +36,10 @@ A Capim, com cerca de 150 colaboradores em 2026, organiza-se em squads multidisc
     \draw (dp) edge (exp);
 
     \node[draw, dashed, rounded corners, fit=(ceo)(dp)(tech), inner sep=4mm, label={[font=\scriptsize]above right:Comitê Estratégico (semanal)}] {};
-  \end{tikzpicture}
+  \end{tikzpicture}}
   \caption{Organograma resumido da Capim Software}
   \label{fig:organograma}
-  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
+  \legend{Fonte: elaborado pelos autores. Os squads de Sustentação e Experimentos e os ritos de coordenação são confirmados pela entrevista; a separação SaaS/BNPL-POS é uma reconstrução dos autores a partir das linhas de produto descritas, não um organograma oficial da empresa.}
 \end{figure}
 
 \begin{table}[H]
@@ -59,7 +60,25 @@ A Capim, com cerca de 150 colaboradores em 2026, organiza-se em squads multidisc
 \section{Estrela de Galbraith}
 \label{sec:galbraith}
 
-O modelo de Galbraith avalia o alinhamento entre cinco dimensões organizacionais. A Tabela~\ref{tab:galbraith} sintetiza a análise para a Capim.
+O modelo de Galbraith avalia o alinhamento entre cinco dimensões organizacionais, classicamente representadas como uma estrela de cinco pontas (Figura~\ref{fig:galbraith-estrela}). A Tabela~\ref{tab:galbraith} detalha a análise para a Capim em cada uma delas.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[font=\small]
+    \node[regular polygon, regular polygon sides=5, draw, minimum size=4.5cm,
+          fill=gray!8, rounded corners=1pt] (p) {};
+    \foreach \ang/\name in {90/Estratégia, 162/Estrutura, 234/Processos,
+                            306/Recompensas, 18/Pessoas} {
+      \node[draw, rounded corners, fill=gray!15, font=\footnotesize]
+            at (\ang:3.0cm) {\name};
+      \draw[-{Stealth[length=2mm]}, gray!60] (p.center) -- (\ang:2.0cm);
+    }
+    \node[font=\scriptsize\itshape, gray!70] at (p.center) {alinhamento};
+  \end{tikzpicture}
+  \caption{As cinco dimensões da Estrela de Galbraith}
+  \label{fig:galbraith-estrela}
+  \legend{Fonte: elaborado pelos autores a partir do modelo de Galbraith.}
+\end{figure}
 
 \begin{table}[H]
   \centering
@@ -73,7 +92,7 @@ O modelo de Galbraith avalia o alinhamento entre cinco dimensões organizacionai
     Estrutura & Squads autônomos por produto, com coordenação central da Diretoria de Produto. Organização enxuta (\textasciitilde150 pessoas) e horizontal nas decisões operacionais. \\
     Processos & Combinação adaptada de Scrum (\textit{sprints}, \textit{boards}) com \textit{stage-gates} internos: Garagem~2 $\rightarrow$ Garagem~1 $\rightarrow$ Rua. Progressão controlada pelo número de clínicas expostas (5--10 $\rightarrow$ 50--100 $\rightarrow$ 500+). Métrica de sucesso por iniciativa, revisável durante o projeto. \\
     Recompensas & Tema não aprofundado na entrevista. Indícios apontam para reconhecimento por autonomia, \textit{ownership} e exposição direta a problemas estratégicos junto ao CEO. \\
-    Pessoas & Time fundador com formação executiva (MBA internacional). Cultura de iteração rápida, uso intensivo de IA (Claude, Cursor) e proximidade com o usuário final. \\
+    Pessoas & Entrevistado e fundadores com passagem por MBA fora do Brasil, segundo relato. Cultura de iteração rápida, uso intensivo de IA (Claude, Cursor) e proximidade com o usuário final. \\
     \bottomrule
   \end{tabularx}
   \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
@@ -95,7 +114,7 @@ A análise indica que a Capim se enquadra majoritariamente como adhocracia opera
     \textbf{Elemento} & \textbf{Manifestação na Capim} \\
     \midrule
     Mecanismo de coordenação & Ajuste mútuo (reuniões quinzenais e semanais), em detrimento da padronização rígida \\
-    Parte-chave da organização & Núcleo operacional + assessoria de apoio (times de produto, design, engenharia e funções de suporte) \\
+    Parte-chave da organização & Núcleo operacional (times de produto), com forte assessoria de apoio (design, engenharia e funções de suporte) \\
     Parâmetros de design & Estrutura orgânica, especialização horizontal, dispositivos de ligação, descentralização seletiva \\
     Fatores contextuais & Ambiente dinâmico, tecnologia sofisticada (software + IA), organização jovem de porte médio \\
     \bottomrule
@@ -108,9 +127,32 @@ Uma ressalva é necessária: o squad de sustentação apresenta traços mais bur
 \section{Análise SWOT}
 \label{sec:swot}
 
+A Figura~\ref{fig:swot-quadrante} sintetiza os pontos centrais da análise no formato clássico de quadrante; a Tabela~\ref{tab:swot} detalha a lista completa.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[font=\footnotesize,
+      cell/.style={draw, rounded corners, text width=58mm, align=left,
+                   inner sep=4pt, minimum height=32mm}]
+    \matrix[row sep=2mm, column sep=2mm] {
+      \node[cell, fill=green!8] {\textbf{Forças}\par\smallskip
+        Pioneirismo em crédito odontológico; ecossistema integrado; base instalada relevante; cultura de \textit{ownership}; uso intensivo de IA.}; &
+      \node[cell, fill=red!6] {\textbf{Fraquezas}\par\smallskip
+        Sistema de gestão ``renegado''; dependência do dentista como canal; maquininha diferenciada só por taxa; sem função formal de descoberta.}; \\
+      \node[cell, fill=blue!8] {\textbf{Oportunidades}\par\smallskip
+        ``Agenda cheia e rentável''; \textit{cross-sell} na base instalada; IA generativa destrava a CamilA; modelo B2C em validação.}; &
+      \node[cell, fill=orange!10] {\textbf{Ameaças}\par\smallskip
+        Endividamento da população; risco regulatório; concorrência em sistemas de gestão; dependência de fornecedores externos de IA.}; \\
+    };
+  \end{tikzpicture}
+  \caption{Síntese da análise SWOT da Capim}
+  \label{fig:swot-quadrante}
+  \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026). Versão completa na Tabela~\ref{tab:swot}.}
+\end{figure}
+
 \begin{table}[H]
   \centering
-  \caption{Análise SWOT da Capim}
+  \caption{Análise SWOT da Capim -- detalhamento}
   \label{tab:swot}
   \begin{tabularx}{\textwidth}{XX}
     \toprule

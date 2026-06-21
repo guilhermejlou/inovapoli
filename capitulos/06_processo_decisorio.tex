@@ -18,8 +18,8 @@ A governança da inovação na Capim é desenhada para dar autonomia aos times, 
 \begin{description}
   \item[Times de produto autônomos] cada squad foca em iterar e construir funcionalidades de forma ágil para seu produto.
   \item[Diretoria de Produto] coordenação centralizada cujo papel principal é evitar interferências e sobreposições de trabalho entre squads.
-  \item[Comitê tático] reuniões quinzenais com todos os PMs e o time de design, para sincronização do desenvolvimento.
-  \item[Comitê estratégico] reunião semanal entre CEO, Diretoria de Produto, liderança de tecnologia e o PM de experimentos, na qual se definem rumos e se tratam problemas críticos.
+  \item[Reunião de Produto (quinzenal)] reúne todos os PMs e o time de design, para sincronização do desenvolvimento -- já apresentada na Tabela~\ref{tab:ritos}.
+  \item[Reunião Estratégica (semanal)] reúne CEO, Diretoria de Produto, liderança de tecnologia e o PM de experimentos, na qual se definem rumos e se tratam problemas críticos -- já apresentada na Tabela~\ref{tab:ritos}.
 \end{description}
 
 \subsection{Pontos de decisão e gates}
@@ -59,7 +59,34 @@ Essa descrição, por si só, já indica uma governança mais sofisticada do que
 
 \textcite{salerno2015} argumentam, a partir de teoria contingencial, que não existe um único processo ``correto'' de inovação aplicável a qualquer projeto: o processo adequado depende do grau de incerteza de mercado e de tecnologia e do papel do cliente na especificação da solução. Os autores propõem uma tipologia de oito processos, dos quais quatro são particularmente relevantes para a Capim: o processo \textit{tradicional} (da ideia ao lançamento, adequado a inovações incrementais em mercado e tecnologia maduros); o processo de \textit{atividades paralelas} (em que a comercialização começa antes de o desenvolvimento estar concluído, típico de software); e os processos de \textit{pausa} -- esperando o mercado, esperando a tecnologia, ou ambos -- em que o projeto é deliberadamente suspenso até que uma condição externa se resolva.
 
-Ao classificar as linhas de produto da Capim segundo essa tipologia (Tabela~\ref{tab:tipologia}), observa-se que a empresa, na prática, já opera mais de um tipo de processo simultaneamente -- mas sem reconhecer essa diferença formalmente na governança.
+Ao classificar as linhas de produto da Capim segundo essa tipologia (Figura~\ref{fig:matriz-incerteza} e Tabela~\ref{tab:tipologia}), observa-se que a empresa, na prática, já opera mais de um tipo de processo simultaneamente -- mas sem reconhecer essa diferença formalmente na governança. A classificação a seguir é uma leitura analítica dos autores deste relatório à luz da tipologia, não uma categorização declarada pela própria empresa, e deve ser validada com a equipe.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{!}{6.5cm}{%
+  \begin{tikzpicture}[
+      font=\small,
+      axis/.style={-{Stealth[length=2.5mm]}, thick},
+      init/.style={draw, rounded corners, fill=gray!12, align=center,
+                   inner sep=2pt, font=\footnotesize, text width=22mm}
+    ]
+    \draw[axis] (0,0) -- (9,0) node[below=4mm, midway] {\textbf{Incerteza de mercado} $\rightarrow$};
+    \draw[axis] (0,0) -- (0,9) node[above=2mm, rotate=90, anchor=south, midway] {\textbf{Incerteza de tecnologia} $\rightarrow$};
+    \draw[gray!40, dashed] (4.5,0) -- (4.5,9);
+    \draw[gray!40, dashed] (0,4.5) -- (9,4.5);
+    \node[gray!60, font=\scriptsize\itshape] at (2.2,8.6) {Pausa esp. tecnologia};
+    \node[gray!60, font=\scriptsize\itshape] at (6.8,8.6) {Ambos / radical};
+    \node[gray!60, font=\scriptsize\itshape] at (2.2,0.4) {Tradicional};
+    \node[gray!60, font=\scriptsize\itshape] at (6.8,0.4) {Pausa esp. mercado};
+    \node[init] at (2.0,2.0) {Sistema de gestão};
+    \node[init] at (3.4,2.6) {Capix};
+    \node[init, fill=blue!10] at (2.8,7.0) {CamilA};
+    \node[init, fill=blue!10] at (7.2,3.2) {Modelo B2C};
+  \end{tikzpicture}}
+  \caption{Iniciativas da Capim no plano de incerteza mercado~$\times$~tecnologia}
+  \label{fig:matriz-incerteza}
+  \legend{Fonte: elaborado pelos autores a partir de \textcite{salerno2015}. Posicionamento é interpretação analítica, a validar com a empresa.}
+\end{figure}
 
 \begin{table}[H]
   \centering
@@ -71,14 +98,14 @@ Ao classificar as linhas de produto da Capim segundo essa tipologia (Tabela~\ref
     \midrule
     Sistema de gestão (lembretes, melhorias incrementais) & Tradicional (idea-to-launch) & Mercado e tecnologia maduros; \textit{stage-gates} trimestrais são adequados. \\
     Capix (crédito via Pix) & Tradicional, com elementos de atividades paralelas & Incerteza baixa; lançamento incremental sobre fluxo já existente (WhatsApp $\rightarrow$ interface dedicada). \\
-    CamilA (IA conversacional de vendas) & Pausa esperando avanço tecnológico + atividades paralelas & Tratada na prática como projeto tradicional com métrica trimestral fixa; a tipologia indica que deveria ser formalmente reconhecida como \textit{pausa ativa}, não como falha do processo tradicional. \\
+    CamilA (IA conversacional de vendas) & Leitura dos autores: pausa esperando avanço tecnológico + atividades paralelas & Tratada na prática como projeto tradicional com métrica trimestral fixa; nossa leitura é que se aproxima mais de um processo de pausa do que de uma simples descontinuação por insucesso. \\
     Modelo B2C (``Uber dos dentistas'') & Pausa esperando o mercado / atividades paralelas & Alta incerteza de mercado (resposta de clínicas e pacientes a um modelo de relação inédito); aplicar o mesmo ciclo trimestral rígido do processo tradicional tende a subestimar o tempo de aprendizado necessário. \\
     \bottomrule
   \end{tabularx}
   \legend{Fonte: elaborado pelos autores.}
 \end{table}
 
-O ponto central deste diagnóstico é que a Capim aplica essencialmente \textbf{um único regime de governança} -- métrica por iniciativa mais ciclo trimestral de \textit{go/no-go} -- a projetos que, pela tipologia de \textcite{salerno2015}, pertencem a categorias de processo distintas. Isso é particularmente visível no caso da CamilA: o relato da entrevista descreve o desfecho do projeto como um ``congelamento'' decidido ao fim do ciclo trimestral por não atingimento da métrica -- mas a causa-raiz apontada pelo próprio entrevistado é a imaturidade da tecnologia de IA generativa disponível no período, ou seja, exatamente a condição que define um processo de \textit{pausa esperando avanço tecnológico}. Sem o reconhecimento formal desse tipo de processo, a empresa corre o risco de reavaliar a CamilA nos próximos ciclos com o mesmo critério financeiro/de adoção que usaria para um produto maduro, em vez de um critério de prontidão tecnológica.
+O ponto central deste diagnóstico é que a Capim aplica essencialmente \textbf{a mesma estrutura de avaliação} -- uma métrica definida por iniciativa, revisada ao fim de um ciclo trimestral -- a projetos que, pela tipologia de \textcite{salerno2015}, poderiam ser lidos como pertencentes a categorias de processo distintas. Isso é particularmente visível no caso da CamilA: a entrevista descreve o desfecho do projeto como um ``congelamento'' decidido ao fim do ciclo trimestral por não atingimento da métrica, atribuído pelo próprio entrevistado à imaturidade da tecnologia de IA generativa disponível no período. Nossa leitura é que essa causa-raiz aproxima o caso da condição que a tipologia chama de \textit{pausa esperando avanço tecnológico} -- termo da literatura, e não da empresa. Não há evidência, contudo, de que a Capim reconheça essa distinção formalmente; o risco apontado aqui (reavaliar a CamilA com o mesmo critério usado para produtos maduros) é uma inferência dos autores a partir da ausência dessa distinção no relato, e deve ser confirmada com a empresa antes de ser tratada como diagnóstico definitivo.
 
 \section{Diagnóstico pela Cadeia de Valor da Inovação}
 \label{sec:cadeia-valor}
@@ -87,22 +114,66 @@ O ponto central deste diagnóstico é que a Capim aplica essencialmente \textbf{
 
 Aplicando esse diagnóstico à Capim:
 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[font=\small, node distance=8mm,
+      elo/.style={draw, rounded corners, fill=gray!15, minimum height=11mm, text width=26mm, align=center}]
+    \node[elo, draw=red!60, line width=1pt, fill=red!6] (g) {Geração de ideias\\\scriptsize(elo não evidenciado)};
+    \node[elo, right=of g] (c) {Conversão\\\scriptsize(elo forte)};
+    \node[elo, right=of c] (d) {Difusão\\\scriptsize(elo forte)};
+    \draw[-{Stealth[length=2.5mm]}] (g)--(c);
+    \draw[-{Stealth[length=2.5mm]}] (c)--(d);
+  \end{tikzpicture}
+  \caption{Cadeia de valor da inovação da Capim}
+  \label{fig:cadeia-valor}
+  \legend{Fonte: elaborado pelos autores a partir de \textcite{hansenbirkinshaw2007}.}
+\end{figure}
+
 \begin{description}
   \item[Conversão -- elo forte.] A empresa possui um mecanismo claro de seleção e financiamento: métricas de sucesso por iniciativa, ciclos trimestrais de avaliação e critérios diferenciados para congelamento \textit{versus} descontinuação. Squads autônomos com orçamento e mandato próprio desenvolvem as iniciativas selecionadas.
   \item[Difusão -- elo forte.] A progressão controlada por número de clínicas expostas (5--10 $\rightarrow$ 50--100 $\rightarrow$ 500+) é, em essência, um mecanismo de difusão gradual e deliberado, que aciona times de suporte, onboarding e comercial apenas quando o produto está maduro para tanto -- evitando o despreparo organizacional.
-  \item[Geração de ideias -- elo não evidenciado.] Em nenhum momento da entrevista foi descrito um mecanismo formal de captação ou geração de ideias -- nem interno (mecanismos de polinização cruzada entre squads), nem externo (escuta estruturada de clínicas, dentistas ou parceiros de tecnologia). As iniciativas mencionadas (Capix, CamilA, modelo B2C) parecem emergir de decisões da liderança ou de oportunidades identificadas de forma ad hoc pelo PM de experimentos, e não de um processo sistemático de descoberta.
+  \item[Geração de ideias -- elo não evidenciado.] Em nenhum momento da entrevista foi descrito um mecanismo formal de captação ou geração de ideias -- nem interno (polinização cruzada entre squads), nem externo (escuta estruturada de clínicas, dentistas ou parceiros de tecnologia). Isso não prova a ausência de tal mecanismo -- apenas uma única entrevista foi realizada --, mas é o melhor indício disponível.
 \end{description}
 
-Esse diagnóstico responde diretamente à pergunta levantada na devolutiva do professor sobre se a empresa tem um problema de geração de ideias: \textbf{sim, há indícios de que esse é o elo mais fraco da cadeia de valor da inovação da Capim}. A empresa investiu em mecanismos sofisticados de conversão e difusão, mas não em um mecanismo equivalente de geração e descoberta de oportunidades -- o que é desenvolvido com mais detalhe no Capítulo~\ref{cap:diagnostico-proposta}.
+Esse diagnóstico responde à devolutiva do professor sobre se a empresa tem um problema de geração de ideias: há indícios de que esse é o elo mais fraco da cadeia de valor da inovação da Capim, hipótese desenvolvida no Capítulo~\ref{cap:diagnostico-proposta} e que a equipe deve confirmar com fontes adicionais na empresa.
 
 \section{Portfólio de Inovação: Risco e Retorno}
 \label{sec:portfolio}
 
-\textcite{goffinmitchell2010} propõem avaliar o portfólio de projetos de inovação por meio de uma matriz de risco e retorno, classificando iniciativas em quatro quadrantes: \textit{Pearls} (alto retorno, baixa incerteza), \textit{Oysters} (alto retorno, alta incerteza), \textit{White Elephants} (baixo retorno, alta incerteza) e \textit{Bread and Butter} (baixo retorno, baixa incerteza -- tipicamente projetos incrementais).
+\textcite{goffinmitchell2010} propõem avaliar o portfólio de projetos \textbf{ativos} de inovação por meio de uma matriz de risco e retorno, classificando iniciativas em quatro quadrantes: \textit{Pearls} (alto retorno, baixo risco), \textit{Oysters} (alto retorno, alto risco), \textit{White Elephants} (baixo retorno, alto risco) e \textit{Bread and Butter} (baixo retorno, baixo risco -- tipicamente projetos incrementais).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{!}{6.5cm}{%
+  \begin{tikzpicture}[
+      font=\small,
+      axis/.style={-{Stealth[length=2.5mm]}, thick},
+      bubble/.style={circle, draw, align=center, font=\scriptsize,
+                     minimum size=15mm, inner sep=1pt}
+    ]
+    \draw[axis] (0,0) -- (9,0) node[below=4mm, midway] {\textbf{Risco / Incerteza} $\rightarrow$};
+    \draw[axis] (0,0) -- (0,9) node[above=2mm, rotate=90, anchor=south, midway] {\textbf{Retorno potencial} $\rightarrow$};
+    \draw[gray!40, dashed] (4.5,0) -- (4.5,9);
+    \draw[gray!40, dashed] (0,4.5) -- (9,4.5);
+    \node[gray!70, font=\footnotesize\bfseries] at (1.7,8.5) {Pearls};
+    \node[gray!70, font=\footnotesize\bfseries] at (7.3,8.5) {Oysters};
+    \node[gray!70, font=\footnotesize\bfseries] at (1.7,0.5) {Bread \& Butter};
+    \node[gray!70, font=\footnotesize\bfseries] at (7.3,0.5) {White Elephants};
+    \node[bubble, fill=gray!15] at (1.8,2.0) {Sistema\\gestão};
+    \node[bubble, fill=gray!15] at (4.0,1.3) {Capix};
+    \node[bubble, fill=blue!12] at (6.0,7.5) {CamilA};
+    \node[bubble, fill=blue!12] at (7.8,5.5) {B2C};
+    \node[draw, dashed, circle, minimum size=15mm, gray!50] at (2.3,6.8) {};
+    \node[gray!60, font=\scriptsize\itshape, align=center] at (2.3,6.8) {(vazio)};
+  \end{tikzpicture}}
+  \caption{Carteira ativa da Capim na matriz risco-retorno de \textcite{goffinmitchell2010}}
+  \label{fig:portfolio-bolhas}
+  \legend{Fonte: elaborado pelos autores. O quadrante \textit{Pearls} aparece vazio nas quatro iniciativas conhecidas -- amostra pequena, ver ressalva no texto.}
+\end{figure}
 
 \begin{table}[H]
   \centering
-  \caption{Carteira de iniciativas da Capim na matriz risco-retorno}
+  \caption{Carteira ativa de iniciativas da Capim na matriz risco-retorno}
   \label{tab:portfolio}
   \begin{tabularx}{\textwidth}{lXX}
     \toprule
@@ -110,36 +181,43 @@ Esse diagnóstico responde diretamente à pergunta levantada na devolutiva do pr
     \midrule
     Bread and Butter (baixo risco, retorno previsível) & Sistema de gestão (melhorias incrementais), Capix & Núcleo de manutenção e melhoria contínua da base instalada; bem servido pelo processo tradicional de \textit{stage-gates}. \\
     Oysters (alto risco, alto retorno potencial) & CamilA, modelo B2C (``Uber dos dentistas'') & \textit{Home runs} aguardando validação; exigem tolerância a incerteza prolongada e critérios de avaliação não puramente financeiros. \\
-    White Elephants (alto risco, retorno incerto) & Iniciativas descontinuadas sem registro sistemático (mencionadas apenas informalmente como ``deu errado'') & Risco de a empresa não capturar aprendizado de projetos encerrados, por falta de documentação estruturada. \\
-    Pearls (baixo risco, alto retorno) & Não identificado claramente no relato & Possível sinal de que o portfólio carece de iniciativas já validadas tecnicamente, mas ainda não escaladas -- typically alimentadas por um funil de descoberta robusto. \\
+    White Elephants (alto risco, retorno baixo/incerto) & Nenhuma iniciativa ativa identificada nesse quadrante & Quadrante vazio entre as iniciativas ativas relatadas -- não inclui projetos já descontinuados, que pertencem a uma discussão de gestão do conhecimento, não de portfólio corrente (ver Capítulo~\ref{cap:diagnostico-proposta}). \\
+    Pearls (baixo risco, alto retorno) & Nenhuma iniciativa identificada no relato & Possível sinal de lacuna no portfólio, mas a amostra é de apenas quatro iniciativas conhecidas -- insuficiente para afirmar uma lacuna estrutural com confiança. \\
     \bottomrule
   \end{tabularx}
   \legend{Fonte: elaborado pelos autores a partir da entrevista com Lucas Mathias (2026).}
 \end{table}
 
-A ausência de iniciativas claramente classificáveis como \textit{Pearls} reforça o diagnóstico da Seção~\ref{sec:cadeia-valor}: sem um funil de descoberta que amadureça oportunidades de baixo risco e alto retorno antes de irem a mercado, o portfólio da Capim tende a se polarizar entre projetos incrementais de baixo risco (\textit{Bread and Butter}) e apostas radicais de alto risco (\textit{Oysters}), sem o estágio intermediário que tipicamente preencheria o quadrante de \textit{Pearls}.
+A ausência de iniciativas classificáveis como \textit{Pearls} é consistente com o diagnóstico da Seção~\ref{sec:cadeia-valor} -- sem um funil de descoberta que amadureça oportunidades de baixo risco e alto retorno antes de irem a mercado, seria esperado que o portfólio se polarizasse entre \textit{Bread and Butter} e \textit{Oysters}. Trata-se, porém, de uma leitura sugestiva e não de uma conclusão estatisticamente robusta, dado que apenas quatro iniciativas foram identificadas na entrevista; um levantamento mais amplo do portfólio real da empresa é necessário antes de tratar essa lacuna como achado consolidado.
 
 \section{Ambidestria: Descoberta, Incubação e Aceleração}
 \label{sec:ambidestria}
 
-\textcite{salernogomes2018} descrevem o modelo de três macroatividades -- Descoberta, Incubação e Aceleração (DNA) -- segundo o qual sistemas de gestão da inovação mais radical precisam diferenciar explicitamente a governança de cada fase, em vez de tratar toda inovação com o mesmo processo. Mapeando os estágios da Capim a esse modelo (Tabela~\ref{tab:dna}):
+\textcite{salernogomes2018} descrevem o modelo de três macroatividades -- Descoberta, Incubação e Aceleração (DNA) -- segundo o qual sistemas de gestão da inovação mais radical precisam diferenciar explicitamente a governança de cada fase, em vez de tratar toda inovação com o mesmo processo. A Figura~\ref{fig:funil-dna} mapeia os estágios da Capim a esse modelo.
 
-\begin{table}[H]
+\begin{figure}[H]
   \centering
-  \caption{Estágios da Capim mapeados ao modelo Descoberta-Incubação-Aceleração}
-  \label{tab:dna}
-  \begin{tabularx}{\textwidth}{lXX}
-    \toprule
-    \textbf{Macroatividade} & \textbf{Equivalente na Capim} & \textbf{Observação} \\
-    \midrule
-    Descoberta & \textbf{Não formalizada} & Não há hub, função ou rito dedicado à busca ativa de oportunidades antes da Garagem~2; o projeto já ``nasce'' como hipótese a testar. \\
-    Incubação & Garagem 2 & Time isolado testa hipóteses com 5--10 clínicas parceiras, protegido da operação corrente. \\
-    Aceleração & Garagem 1 $\rightarrow$ Rua & Envolvimento progressivo de marketing, engenharia, suporte e comercial conforme a base de clínicas expostas cresce. \\
-    \bottomrule
-  \end{tabularx}
-  \legend{Fonte: elaborado pelos autores a partir de \textcite{salernogomes2018} e da entrevista com Lucas Mathias (2026).}
-\end{table}
+  \begin{tikzpicture}[
+      font=\small, node distance=0mm,
+      stage/.style={draw, fill=gray!15, minimum height=20mm, align=center,
+                    trapezium, trapezium left angle=75, trapezium right angle=105,
+                    trapezium stretches=true, inner sep=3pt},
+      lbl/.style={font=\scriptsize, align=center}
+    ]
+    \node[stage, fill=blue!8, minimum width=30mm, dashed] (desc) {\textbf{Descoberta}\\\scriptsize(não formalizada)};
+    \node[stage, minimum width=34mm, right=2mm of desc] (inc) {\textbf{Incubação}};
+    \node[stage, minimum width=46mm, right=2mm of inc] (acc) {\textbf{Aceleração}};
+    \node[lbl, below=3mm of inc] {Garagem 2 \\ 5--10 clínicas};
+    \node[lbl, below=3mm of acc] {Garagem 1 $\rightarrow$ Rua \\ 50--100 $\rightarrow$ 500+ clínicas};
+    \node[lbl, below=3mm of desc, text=blue!50] {\textit{lacuna diagnosticada}};
+    \draw[-{Stealth[length=3mm]}, thick] (desc.east) -- (inc.west);
+    \draw[-{Stealth[length=3mm]}, thick] (inc.east) -- (acc.west);
+  \end{tikzpicture}
+  \caption{Macroatividades DNA \textit{versus} estágios Garagem da Capim}
+  \label{fig:funil-dna}
+  \legend{Fonte: elaborado pelos autores a partir de \textcite{salernogomes2018} e da entrevista com Lucas Mathias (2026). Não há etapa de Descoberta correspondente confirmada na entrevista.}
+\end{figure}
 
 A Capim, portanto, já pratica uma forma de ambidestria estrutural ao isolar a Garagem~2 do restante da operação -- mecanismo equivalente ao que \textcite{hansenbirkinshaw2007} chamam de ``\textit{safe haven}'' para a fase de conversão. O que está ausente é a etapa de \textbf{Descoberta} propriamente dita: segundo \textcite{salernogomes2018}, geração de ideias tradicional (sugestão avaliada em um comitê) não equivale a Descoberta, que envolve visão simultânea de oportunidade de mercado e plataforma tecnológica, tipicamente sustentada por uma função ou ``hub'' de inovação dedicado. \textcite{oconnormeyer2026} chegam à mesma conclusão a partir de pesquisa mais recente: tratar a inovação estratégica como função permanente -- com Descoberta como competência organizacional dedicada, e não apenas como etapa implícita antes da incubação.
 
-Adicionalmente, tanto \textcite{salernogomes2018} quanto \textcite{oconnormeyer2026} enfatizam que projetos incrementais e radicais devem ser geridos por sistemas de decisão \textbf{diferentes} -- não apenas por equipes diferentes. Na Capim, a separação de equipes (squads \textit{versus} Garagem~2) já existe, mas os \textbf{critérios de decisão} permanecem os mesmos para ambos os tipos de projeto: uma métrica quantitativa fixada no início e avaliada ao fim do trimestre. \textcite{salernogomes2018} mostram, a partir de casos reais, que aplicar critérios financeiros ou de adoção típicos do processo tradicional a projetos de alta incerteza tende a gerar decisões equivocadas de descontinuação precoce -- risco que se materializa no caso da CamilA, analisado na Seção~\ref{sec:tipologia}. Essa constatação fundamenta diretamente a proposta de adoção de um \textit{learning plan} formal, desenvolvida no Capítulo~\ref{cap:diagnostico-proposta}.
+Adicionalmente, tanto \textcite{salernogomes2018} quanto \textcite{oconnormeyer2026} enfatizam que projetos incrementais e radicais deveriam ser geridos por sistemas de decisão \textbf{diferentes} -- não apenas por equipes diferentes. Na Capim, a separação de equipes (squads \textit{versus} Garagem~2) já existe, e a entrevista indica que o \textit{valor} da métrica de sucesso é definido individualmente para cada iniciativa. O que parece permanecer constante, independentemente do tipo de projeto, é a \textbf{estrutura} do critério: uma métrica quantitativa única, fixada no início e avaliada ao fim de um ciclo trimestral -- sem um mecanismo declarado de reconhecimento de que projetos de alta incerteza tecnológica (como a CamilA) podem precisar de um ritmo ou de uma régua de avaliação diferente da de projetos incrementais. \textcite{salernogomes2018} mostram, a partir de casos reais, que aplicar essa mesma estrutura de avaliação a projetos de alta incerteza tende a gerar decisões equivocadas de descontinuação precoce -- risco discutido no caso da CamilA (Seção~\ref{sec:tipologia}), mas que carece de confirmação direta com a empresa. Essa constatação fundamenta a proposta de adoção de um \textit{learning plan} formal, desenvolvida no Capítulo~\ref{cap:diagnostico-proposta}.
